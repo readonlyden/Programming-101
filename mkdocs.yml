@@ -5,3 +5,9 @@ theme:
     primary: white
   logo: assets/logo.png
   language: ru
+
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
