@@ -1,0 +1,7 @@
+site_name: СевГУ - П:БПОИ / П:ЯВУ
+theme:
+  name: material
+  palette:
+    primary: white
+  logo: assets/logo.png
+  language: ru
