@@ -11,8 +11,19 @@ theme:
     - navigation.sections
     - navigation.indexes
     - navigation.top
-    
+
 markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+
+copyright: "Сделано с &#10084; на кафедре ИТиКС"
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/readonlyden/Programming-101
+    - icon: fontawesome/brands/vk
+      link: https://vk.com/sevsu_itiks
+    - icon: fontawesome/solid/link
+      link: https://www.sevsu.ru/
