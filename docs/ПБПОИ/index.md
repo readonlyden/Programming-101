@@ -15,8 +15,8 @@
 
 ## Материалы курса
 
-[Методические указания - часть 1](/assets/files/ПБПОИ/MU_Programmirovanie_1_1.pdf){ .md-button .md-button--primary }
-[Шаблон отчёта](/assets/files/ПБПОИ/LR1_shablon_otcheta.docx){ .md-button .md-button--primary }
+[Методические указания - часть 1](../assets/files/ПБПОИ/MU_Programmirovanie_1_1.pdf){ .md-button .md-button--primary }
+[Шаблон отчёта](../assets/files/ПБПОИ/LR1_shablon_otcheta.docx){ .md-button .md-button--primary }
 
 ## Требования к обучающимся
 1. ОС Windows/Linux/Mac OS
