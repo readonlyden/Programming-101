@@ -6,11 +6,11 @@ theme:
       primary: white
       toggle:
         icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
+        name: Включить темную тему
     - scheme: slate
       toggle:
         icon: material/toggle-switch
-        name: Switch to light mode
+        name: Включить светлую тему
   logo: assets/logo.png
   language: ru
 
