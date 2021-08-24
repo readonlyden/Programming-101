@@ -1,4 +1,5 @@
 site_name: СевГУ - П:БПОИ / П:ЯВУ
+site_url: 'https://readonlyden.github.io/Programming-101'
 theme:
   name: material
   palette:
