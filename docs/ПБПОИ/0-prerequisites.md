@@ -70,7 +70,7 @@ Java является **объектно-ориентированным язык
 
 *Рисунок 4. Среда IntelliJ IDEA*
 
-![Рисунок 5. Окно создания нового проекта](../assets/images/ПБПОИ/shared/intellij-new-project.png)
+![Рисунок 5. Окно создания нового проекта](../assets/images/ПБПОИ/shared/intellij-new-project2.png)
 
 *Рисунок 5. Среда IntelliJ IDEA*
 
