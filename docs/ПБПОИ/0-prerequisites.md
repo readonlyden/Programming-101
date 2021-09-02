@@ -118,7 +118,7 @@ gradlew <task_name>
 
 Полностью сконфигурированный проект, рекомендуемый для обучения с использованием *Gradle*, расположен здесь:
 
-[readonlyden/GradleTemplate :fontawesome-brands-github:](#){ .md-button .md-button--primary }
+[readonlyden/GradleTemplate :fontawesome-brands-github:](https://github.com/readonlyden/GradleTemplate){ .md-button .md-button--primary }
 
 ```groovy
 // Используемые плагины
