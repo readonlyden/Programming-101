@@ -31,6 +31,9 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.details
   - pymdownx.keys
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 
 
