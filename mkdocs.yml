@@ -43,6 +43,10 @@ markdown_extensions:
 copyright: "Сделано с &#10084; на кафедре ИТиКС"
 
 extra:
+  analytics:
+    provider: google
+    property: G-44C4RXEXJJ
+
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/readonlyden/Programming-101
