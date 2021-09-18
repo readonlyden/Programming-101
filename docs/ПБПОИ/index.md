@@ -16,7 +16,35 @@
 ## Материалы курса
 
 [Методические указания - часть 1](../assets/files/ПБПОИ/MU_Programmirovanie_1_1.pdf){ .md-button .md-button--primary }
-[Шаблон отчёта](../assets/files/ПБПОИ/LR1_shablon_otcheta.docx){ .md-button .md-button--primary }
+
+[Методические указания - часть 2](../assets/files/ПБПОИ/MU_Programmirovanie_1_2.pdf){ .md-button .md-button--primary }
+
+[Методические указания - часть 3](../assets/files/ПБПОИ/MU_Programmirovanie_1_3.pdf){ .md-button .md-button--primary }
+
+[Методические указания - часть 4](../assets/files/ПБПОИ/MU_Programmirovanie_1_4.pdf){ .md-button .md-button--primary }
+
+
+[Шаблон отчёта - ЛР1](../assets/files/ПБПОИ/LR1_shablon_otcheta.docx){ .md-button .md-button--primary }
+
+[Шаблон отчёта - ЛР2](../assets/files/ПБПОИ/LR2_shablon_otcheta.docx){ .md-button .md-button--primary }
+
+[Шаблон отчёта - ЛР3](../assets/files/ПБПОИ/LR3_shablon_otcheta.docx){ .md-button .md-button--primary }
+
+[Шаблон отчёта - ЛР4](../assets/files/ПБПОИ/LR4_shablon_otcheta.docx){ .md-button .md-button--primary }
+
+[Шаблон отчёта - ЛР5](../assets/files/ПБПОИ/LR5_shablon_otcheta.docx){ .md-button .md-button--primary }
+
+[Шаблон отчёта - ЛР6](../assets/files/ПБПОИ/LR6_shablon_otcheta.docx){ .md-button .md-button--primary }
+
+[Шаблон отчёта - ЛР7](../assets/files/ПБПОИ/LR7_shablon_otcheta.docx){ .md-button .md-button--primary }
+
+[Шаблон отчёта - ЛР8](../assets/files/ПБПОИ/LR8_shablon_otcheta.docx){ .md-button .md-button--primary }
+
+[Шаблон отчёта - ЛР9](../assets/files/ПБПОИ/LR9_shablon_otcheta.docx){ .md-button .md-button--primary }
+
+[Шаблон отчёта - ЛР10](../assets/files/ПБПОИ/LR10_shablon_otcheta.docx){ .md-button .md-button--primary }
+
+[Шаблон отчёта - ЛР11](../assets/files/ПБПОИ/LR11_shablon_otcheta.docx){ .md-button .md-button--primary }
 
 ## Требования к обучающимся
 1. ОС Windows/Linux/Mac OS
