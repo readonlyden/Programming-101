@@ -182,7 +182,7 @@ public class Lab6_1 {
 ```java
 import static java.lang.Math.*;
 
-public class lab6_1_2 {
+public class Lab6_1 {
      public static void main (String[] args){
             double x = 1, g, z, y;
 
