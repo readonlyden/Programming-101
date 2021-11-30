@@ -19,7 +19,10 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 7. Создайте новую ветку в git
-8. Отредактируйте md-файлы в папке docs
+8. Отредактируйте md-файлы в папке docs. Запустите проект локально с помощью
+```bash
+mkdocs serve
+```
 9. Создайте нужные коммиты
 10. Отправьте вашу ветку в Github с помощью git push
 11. Создайте новый pull request
