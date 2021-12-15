@@ -1,0 +1,1711 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://readonlyden.github.io/Programming-101/%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab2/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.2">
+    
+    
+      
+        <title>Лабораторная работа №2 - СевГУ - П:БПОИ / П:ЯВУ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f7951f6f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-44C4RXEXJJ"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-44C4RXEXJJ",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-44C4RXEXJJ"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="СевГУ - П:БПОИ / П:ЯВУ" class="md-header__button md-logo" aria-label="СевГУ - П:БПОИ / П:ЯВУ" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            СевГУ - П:БПОИ / П:ЯВУ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Лабораторная работа №2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent=""  aria-label="Включить темную тему"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Включить темную тему" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Включить светлую тему"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Включить светлую тему" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Очистить" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Главная
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Git/in-real-world/" class="md-tabs__link">
+        Git
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/0-prerequisites/" class="md-tabs__link">
+        Основы Java
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        ПБПОИ
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%D0%9F%D0%AF%D0%92%D0%A3/faq/" class="md-tabs__link">
+        ПЯВУ
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="СевГУ - П:БПОИ / П:ЯВУ" class="md-nav__button md-logo" aria-label="СевГУ - П:БПОИ / П:ЯВУ" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    СевГУ - П:БПОИ / П:ЯВУ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Главная
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Git/in-real-world/" class="md-nav__link">
+        Git в реальной разработке
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Основы Java
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Основы Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Основы Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/0-prerequisites/" class="md-nav__link">
+        0. Java. JVM, JRE, JDK. Среды разработки. Системы сборки.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/1-java-basics/" class="md-nav__link">
+        1. Основы Java.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/2-conditionals-loops-functions/" class="md-nav__link">
+        2. Условные операторы. Операторы циклов. Функции и рекурсия. Массивы.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/3-oop/" class="md-nav__link">
+        3. Объектно-ориентированное программирование
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/4-collections/" class="md-nav__link">
+        4. Коллекции. Потоки ввода-вывода.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/5-gc/" class="md-nav__link">
+        5. ⭐ Устройство JVM. Сборщик мусора (GC)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">ПБПОИ</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="ПБПОИ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          ПБПОИ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/" class="md-nav__link">
+        Книги и ресурсы
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1/" class="md-nav__link">
+        Лабораторная работа №1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab10/" class="md-nav__link">
+        Лабораторная работа №10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab11/" class="md-nav__link">
+        Лабораторная работа №11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Лабораторная работа №2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Лабораторная работа №2
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание раздела">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание раздела
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Название работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Цель работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Постановка задачи
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Краткие теоретические сведения
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Базовые понятия программирования
+  </a>
+  
+    <nav class="md-nav" aria-label="Базовые понятия программирования">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Переменные и именованные константы
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Оператор присваивания
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bluej" class="md-nav__link">
+    Использование окна кода BlueJ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#systemoutprintf" class="md-nav__link">
+    Метод форматированного вывода System.out.printf()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Порядок выполнения работы
+  </a>
+  
+    <nav class="md-nav" aria-label="Порядок выполнения работы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bluej_1" class="md-nav__link">
+    Работа в окне кода BlueJ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemoutprintf_1" class="md-nav__link">
+    Разработка программы с использованием метода форматированного вывода System.out.printf()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Варианты заданий
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Рекомендации по составлению отчета по лабораторной работе
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Контрольные вопросы
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3/" class="md-nav__link">
+        Лабораторная работа №3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4/" class="md-nav__link">
+        Лабораторная работа №4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5/" class="md-nav__link">
+        Лабораторная работа №5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab6/" class="md-nav__link">
+        Лабораторная работа №6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab7/" class="md-nav__link">
+        Лабораторная работа №7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practice/" class="md-nav__link">
+        ⭐ Практическое задание
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tasks/" class="md-nav__link">
+        Задачи
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          ПЯВУ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ПЯВУ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          ПЯВУ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%AF%D0%92%D0%A3/faq/" class="md-nav__link">
+        Небольшой конспект по ООП
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%AF%D0%92%D0%A3/tasks/" class="md-nav__link">
+        Задачи и идеи для проектов
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание раздела">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание раздела
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Название работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Цель работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Постановка задачи
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Краткие теоретические сведения
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Базовые понятия программирования
+  </a>
+  
+    <nav class="md-nav" aria-label="Базовые понятия программирования">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Переменные и именованные константы
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Оператор присваивания
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bluej" class="md-nav__link">
+    Использование окна кода BlueJ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#systemoutprintf" class="md-nav__link">
+    Метод форматированного вывода System.out.printf()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Порядок выполнения работы
+  </a>
+  
+    <nav class="md-nav" aria-label="Порядок выполнения работы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bluej_1" class="md-nav__link">
+    Работа в окне кода BlueJ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemoutprintf_1" class="md-nav__link">
+    Разработка программы с использованием метода форматированного вывода System.out.printf()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Варианты заданий
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Рекомендации по составлению отчета по лабораторной работе
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Контрольные вопросы
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+  <h1>Лабораторная работа №2</h1>
+
+<h3 id="_1">Название работы</h3>
+<p>Обработка данных простых типов. Работа с панелью ввода <em>BlueJ</em>. Форматированный вывод.</p>
+<h3 id="_2">Цель работы</h3>
+<p>Ознакомиться с простыми типами данных <em>Java</em>, научиться объявлять переменные и литералы этих типов и выполнять операции над ними, научиться применять оператор присваивания для данных простых типов, научиться применять метод <code>System.out.printf()</code> – метод форматированного вывода − для вывода на экран значений различных типов, научиться применять окно кода в <em>BlueJ</em>. </p>
+<h3 id="_3">Постановка задачи</h3>
+<ol>
+<li>Ввести заданные операторы в окно кода <em>BlueJ</em> и проанализировать полученные результаты.</li>
+<li>Разработать программу, в которой используется метод <code>System.out.printf()</code> для вывода в окно терминала данных, предусмотренных вариантом задания.</li>
+</ol>
+<h3 id="_4">Краткие теоретические сведения</h3>
+<p><strong>Простые, или примитивные, типы данных</strong> - это встроенные в язык <em>Java</em> типы, аналогичные типам данных большинства языков программирования. Эти типы могут применяться самостоятельно или используются как составные части более сложных типов данных, которые создают программисты.</p>
+<p><em>Java</em> позволяет использовать 8 простых типов данных:</p>
+<ul>
+<li><code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code> –целочисленные,</li>
+<li><code>float</code>, <code>double</code> – вещественные обычной и двойной точности,</li>
+<li><code>boolean</code> – булевские (логические, представляющие истину или ложь),</li>
+<li><code>char</code> – символьные, представляющие символы <em>Unicode</em>.</li>
+</ul>
+<p>Диапазоны значений для простых типов данных приведены на рисунке 3.</p>
+<p><img alt="Рисунок 3.1 - диапазоны значений для примитивных типов данных" src="../../assets/images/%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab2/1.jpg" /></p>
+<p><em>Рисунок 3.1 - диапазоны значений для примитивных типов данных</em></p>
+<h3 id="_5">Базовые понятия программирования</h3>
+<p>Вспомним некоторые понятия программирования, упомянутые в предыдущей лабораторной работе.</p>
+<h4 id="_6">Переменные и именованные константы</h4>
+<p><strong>Переменные</strong> – элементы, значение которых при выполнении программы можно изменить, но тип изменить нельзя.</p>
+<p>Переменные имеют имена и значения. Имя переменной – это название области памяти, в которой хранится значение переменной. Чтобы ввести переменную в употребление, ее необходимо объявить одним из двух способов:</p>
+<ol>
+<li><code>тип имя</code>;</li>
+<li><code>тип имя = начальноеЗначение;</code> (точка с запятой – это часть объявления!)</li>
+</ol>
+<p><strong>Объявление переменной</strong> – это приказ выделить для нее память.</p>
+<p><strong>Имена переменных</strong> пишут в стиле ― <em>camelStyle</em>, начиная с маленькой буквы, а каждое следующее слово в имени – с большой буквы.</p>
+<p><strong>Именованные константы</strong> – это переменные, значение которых определяется «при рождении», после чего изменять их значения запрещено.</p>
+<p><strong>Форма задания константы с именем:</strong> 
+<div class="highlight"><pre><span></span><code><span class="kd">final</span> <span class="n">тип</span> <span class="n">ИМЯ</span> <span class="o">=</span> <span class="n">значение</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Слово <code>final</code> указывает, что значение нельзя изменить. Принято имена констант записывать БОЛЬШИМИ БУКВАМИ.</p>
+<h4 id="_7">Оператор присваивания</h4>
+<p><strong>Оператор присваивания</strong> заменяет старое значение некоторой переменной новым. После замены старое значение теряется, т.е. использовать его нельзя.</p>
+<p><strong>Форма оператора:</strong> 
+<div class="highlight"><pre><span></span><code><span class="n">переменная</span> <span class="o">=</span> <span class="n">выражение</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Переменная является приемником данных, а выражение – источником. Выражение определяет новое значение переменной. Равенство левой и правой частей наступает только после выполнения оператора присваивания и имеет смысл равенства значений источника и приемника. Порядок выполнения оператора: сначала, без учета левой части, вычисляется выражение с текущими значениями переменных. Затем полученное значение выражения становится значением переменной-приемника. </p>
+<p>Если в выражении используется та же переменная, скажем, <code>x</code>, что и слева, при вычислении выражения применяется имеющееся значение <code>x</code>, которое заменяется новым значением – значением выражения – после вычисления выражения. Например, пусть <code>x = 5.0</code>. При выполнении оператора <code>x = x + 1.2;</code> берется значение переменной <code>x</code>, равное 5, к нему добавляется число 1.2, и результат становится значением переменной <code>x</code>.</p>
+<p>Язык <em>Java</em> требует, чтобы размер приемника был не меньше, чем размер результата. Когда это требование нарушается, возникает ошибка:</p>
+<blockquote>
+<p>Возможна потеря точности – possible loss of precision. </p>
+</blockquote>
+<p>Пример, при котором возникает такая ошибка: 
+<div class="highlight"><pre><span></span><code><span class="kt">float</span> <span class="n">x</span><span class="p">;</span> 
+<span class="n">х</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+</code></pre></div>
+Размер слева – 32 бита, размер справа – 64 бита, т.к. 1.0 считается константой (литерал) типа <code>double</code>.</p>
+<h3 id="bluej">Использование окна кода BlueJ</h3>
+<p>Система <em>BlueJ</em> имеет специальное окно – панель (окно) кода (или окно команд) (рисунки 3.2, 3.3). </p>
+<p>Окно кода позволяет проверить фрагменты программы до их включения в проект. Действия в окне кода выполняются по строкам после нажатия <span class="keys"><kbd class="key-enter">Enter</kbd></span>. </p>
+<p>Объявленные переменные запоминаются, т.е. повторно объявить переменную нельзя. Если окно кода не видно после запуска <em>BlueJ</em>, откройте проект, созданный ранее, и нажмите <em>Виды</em> – <em>Показать панель кода</em>. </p>
+<p>При необходимости вводимый в окно кода текст можно расположить в нескольких строках, при этом промежуточные строки заканчиваются нажатием <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span>. Проверенные операторы можно вставить в текст программы, пользуясь копированием <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> и вставкой <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-v">V</kbd></span>.</p>
+<p><img alt="Рисунок 3.2 - Окно кода. Примеры набора констант" src="../../assets/images/%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab2/2.png" /></p>
+<p><em>Рисунок 3.2 - Окно кода. Примеры набора констант</em></p>
+<p><img alt="Рисунок 3.3. Окно кода. Примеры набора выражений" src="../../assets/images/%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab2/3.png" /></p>
+<p><em>Рисунок 3.3. Окно кода. Примеры набора выражений</em></p>
+<h3 id="systemoutprintf">Метод форматированного вывода <strong>System.out.printf()</strong></h3>
+<p>В предыдущей работе использовался метод <code>System.out.println()</code>, который выводил в окно терминала символьную строку (объект типа <code>String</code>).</p>
+<p>В этой работе рекомендуется применить метод форматированного вывода <code>System.out.printf()</code>, который более удобен, например, для представления результатов в виде аккуратной таблицы. Вызов метода имеет форму:
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="n">format</span><span class="p">,</span> <span class="n">list</span><span class="p">);</span>
+</code></pre></div></p>
+<p><strong>Строка форматов <code>format</code></strong> содержит форматные коды, по одному на каждый элемент списка выводимых переменных <code>list</code>. Форматный код имеет представленную ниже структуру (в скобки <code>[</code> и <code>]</code> заключены необязательные элементы, т.е. в программе такой элемент или присутствует без скобок, или отсутствует)</p>
+<blockquote>
+<p>%[номер_аргумента$][флаги][место][.дробь]тип</p>
+</blockquote>
+<p><strong>Флаги <code>-</code> <code>+</code> <code>0</code> <code>,</code> <code>(</code> <code>)</code></strong>  определяют дополнительные характеристики выводимых данных: </p>
+<ul>
+<li><strong><code>-</code></strong> – выравнивание влево</li>
+<li><strong><code>+</code></strong> – обязательный вывод знака числа</li>
+<li>пробел – пробел вместо плюса для положительных чисел</li>
+<li>0 – заполнение старших пустых позиций числа нулями</li>
+<li><strong><code>,</code></strong> – локализованный разделитель в числах</li>
+<li><strong><code>()</code></strong> – отрицательные числа заключаются в скобки</li>
+</ul>
+<p><strong>Параметр <em>тип</em></strong> определяет вариант преобразования внутреннего представления данных во внешнюю форму:</p>
+<ul>
+<li><code>s</code> − <code>String</code> (строка символов);</li>
+<li><code>c</code> − <code>char</code> (символ);</li>
+<li><code>d</code> − десятичное целое;</li>
+<li><code>o</code> − восьмеричное целое;</li>
+<li><code>x</code> − шестнадцатеричное целое;</li>
+<li><code>f</code> − действительное в фиксированном формате (в форме 999.9999);</li>
+<li><code>e</code> − действительное в математическом формате (в форме 0.999Е99);</li>
+<li><code>tD</code> − дата в форме «месяц-день-год»;</li>
+<li><code>tF</code> − дата в формате «год-месяц-день»;</li>
+<li><code>tT</code> − время в формате «часы:минуты:секунды».</li>
+</ul>
+<p><strong>Параметры <em>место</em> и <em>дробь</em></strong> определяют соответственно количество позиций для выводимых данных (ширину поля) и количество цифр в дробной части (применяются с параметрами типа <code>d</code> и <code>f</code>). Например, <code>%08.3f</code> применяется для вывода действительных данных. Под данные отводится 8 позиций (с учетом знака и разделяющей точки). Из них под дробную часть отводится 3 позиции. При необходимости в целую часть добавляются ведущие нули, чтобы полностью использовать 8 позиций.</p>
+<p>Элементы между форматными кодами выводятся как литералы, в частности, <code>\t</code> – табуляция, <code>\n</code> – переход на новую строку (<code>%n</code> также означает переход на другую строку).</p>
+<p>Примеры:</p>
+<div class="highlight"><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s!&quot;</span><span class="p">,</span> <span class="s">&quot;World&quot;</span><span class="p">);</span> 
+<span class="c1">// &quot;Hello World!&quot;</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%7d&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> 
+<span class="c1">// &quot; 1&quot; – минимум 7 позиций</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%07d&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> 
+<span class="c1">// &quot;0000001&quot; – начальные позиции</span>
+<span class="c1">//заполнены нулями</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.10f&quot;</span><span class="p">,</span> <span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">);</span> 
+<span class="c1">// &quot;3,1415926536&quot; – с точностью</span>
+<span class="c1">// до 10 знаков после запятой</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%tF&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Date</span><span class="p">());</span> 
+<span class="c1">// &quot;2011-01-27&quot;</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%tT&quot;</span><span class="p">,</span> <span class="k">new</span> <span class="n">Date</span><span class="p">());</span> 
+<span class="c1">// &quot;22:42:37&quot;</span>
+</code></pre></div>
+<p>Фрагмент программы:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">256</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">312.678951236</span><span class="p">;</span>
+<span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">&quot;форматированный вывод&quot;</span><span class="p">;</span>
+
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;Демонстрируем %s: a=%08d(10)=%x(16), b=%010.4f\n&quot;</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Данный фрагмент повлечет за собой следующий вывод в окно терминала:
+<div class="highlight"><pre><span></span><code>a=00000256(10)=100(16), b=00312,6790
+</code></pre></div></p>
+<p>Элементы между форматными кодами (выделены красным в вызове метода <code>printf()</code>) выводятся как строковые литералы (константы).</p>
+<h3 id="_8">Порядок выполнения работы</h3>
+<h4 id="bluej_1">Работа в окне кода BlueJ</h4>
+<p><strong>1.</strong> Введите целые константы в окне кода, нажимая после каждой константы <span class="keys"><kbd class="key-enter">Enter</kbd></span>: </p>
+<div class="highlight"><pre><span></span><code>* 35 
+* -246 
+* 5671L.
+</code></pre></div>
+<p><strong>2.</strong> Введите выражения: </p>
+<div class="highlight"><pre><span></span><code>* 4*3+5 
+* 4+3*5 
+* 25-3/5-6+20/3 
+* 5%6 («пять по модулю шесть» − остаток от деления 5 на 6) 
+* 7%6 
+* 7%5
+</code></pre></div>
+<p>После ввода каждого выражения нажимайте <span class="keys"><kbd class="key-enter">Enter</kbd></span>. Обратите внимание на тип и результат.</p>
+<p><strong>3.</strong> Наберите выражения: </p>
+<div class="highlight"><pre><span></span><code>* 1 == 1 
+* 1 &lt; 5 
+* 2 &lt;= 5 
+* 2 &gt; 6 
+* 3 / 2 &gt; 1 
+* 2 != 9
+</code></pre></div>
+<p>После ввода каждого выражения нажимайте <span class="keys"><kbd class="key-enter">Enter</kbd></span>. В этих выражениях используются операции сравнения. Результат операции (и выражения) имеет логический тип (<code>boolean</code>). Если выражение верно, то его значение равно <code>true</code>, иначе – <code>false</code>. Проверяйте результат каждый раз после нажатия <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+<p><strong>4.</strong> Введите в панели кода действительные литералы, каждый в отдельной строке: </p>
+<div class="highlight"><pre><span></span><code>* 3.1415 
+* 2.71823F 
+* 0.314E+1
+</code></pre></div>
+<p>Проанализируйте результаты (что происходит после нажатия клавиши <span class="keys"><kbd class="key-enter">Enter</kbd></span>).</p>
+<p><strong>5.</strong> Наберите в панели кода выражения: </p>
+<div class="highlight"><pre><span></span><code>* 25-3.5-6+21.3
+* 5/6.0
+* 5.0/6
+* 3.7f/5.3f
+</code></pre></div>
+<p>Обратите внимание на значение результата и на его тип.</p>
+<p><strong>6.</strong> Наберите в панели кода выражения </p>
+<div class="highlight"><pre><span></span><code>* 1 == 1.0 
+* 1.0 &lt; 1.5 
+* 2.3 &lt;= 2.3f
+* 1.5 == 1.5f
+</code></pre></div>
+<p><strong>7.</strong> Наберите в панели кода: 
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">x</span><span class="p">;</span> 
+<span class="kt">float</span> <span class="n">a</span><span class="o">=</span><span class="mf">3.5</span><span class="p">;</span> 
+<span class="kt">float</span> <span class="n">d</span><span class="o">=</span><span class="mf">2.5</span><span class="p">;</span> 
+</code></pre></div></p>
+<p>После точки с запятой нажимайте <span class="keys"><kbd class="key-enter">Enter</kbd></span>. Проанализируйте сообщения системы.</p>
+<p><strong>8.</strong> 
+Наберите в панели кода: 
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">;</span> <span class="c1">//(тип x уже задан)</span>
+<span class="kt">float</span> <span class="n">a</span><span class="o">=</span><span class="mf">3.5f</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">d</span><span class="o">=</span><span class="mf">2.5f</span><span class="p">;</span> 
+</code></pre></div></p>
+<p>После точки с запятой нажимайте <span class="keys"><kbd class="key-enter">Enter</kbd></span>. Проверьте значения переменных, введя имя и <span class="keys"><kbd class="key-enter">Enter</kbd></span>.</p>
+<p><strong>9.</strong> Наберите 
+<div class="highlight"><pre><span></span><code><span class="n">d</span><span class="o">=</span><span class="n">d</span><span class="o">+</span><span class="mf">3.75</span><span class="p">;</span>
+<span class="n">x</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="mf">7.5f</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Проверьте значения переменных.</p>
+<p><strong>10.</strong> Введите: 
+<div class="highlight"><pre><span></span><code><span class="kd">final</span> <span class="kt">float</span> <span class="n">K</span><span class="o">=</span><span class="mf">5.4f</span><span class="p">;</span> 
+</code></pre></div>
+Проверьте значение <code>K</code>. Наберите оператор: 
+<div class="highlight"><pre><span></span><code><span class="n">K</span><span class="o">=</span><span class="mf">5.45</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Обратите внимание на сообщение. Наберите:
+<div class="highlight"><pre><span></span><code>final double PI=3.1415926; 
+</code></pre></div></p>
+<p>Вычислите длину окружности с радиусом 10: <code>2*PI*10</code>.</p>
+<h4 id="systemoutprintf_1">Разработка программы с использованием метода форматированного вывода <strong>System.out.printf()</strong></h4>
+<p>Разработайте программу согласно варианту задания (таблица 3.1), проведите ее отладку и испытание на нескольких тестовых примерах.</p>
+<h3 id="_9">Варианты заданий</h3>
+<p>В качестве индивидуального задания на лабораторную работу предлагается разработать программу, которая выполняет следующие действия:</p>
+<ol>
+<li>определяет и инициализирует (задает тип и значение) переменные <code>str</code>, <code>a</code>, <code>b</code>, <code>c</code>, <code>d</code>;</li>
+<li>осуществляет следующий вывод:
+<div class="highlight"><pre><span></span><code>Привет, значение_str: a=значение_a, b=значение_b, c=значение_с, d=значение_d!
+</code></pre></div></li>
+</ol>
+<p>Значения переменных должны выводиться в формате, предусмотренном вариантом задания. После вывода строки, должен быть осуществлен переход на следующую строку.</p>
+<p>После выявления синтаксических ошибок программа должна быть откомпилирована и запущена не менее трех раз (с различными значениями переменных). В качестве тестовых значений переменных студент должен подобрать такие значения, которые проверяют все возможности программы. Например, проверку обязательного вывода знака числа нужно осуществить на положительных и отрицательных значениях. Желательно также проверить, как будет вести себя ваша программа, если заданное значение переменной не помещается в формат, заданный в методе <code>printf()</code>.</p>
+<p>Варианты индивидуальных заданий представлены в таблице 3.1.</p>
+<p>Использованы следующие условные обозначения:</p>
+<ul>
+<li><strong>С10</strong> – десятичная система счисления;</li>
+<li><strong>С16</strong> – шестнадцатеричная система счисления;</li>
+<li><strong>С8</strong> – восьмеричная система счисления;</li>
+<li><strong>Ш</strong> – ширина (минимальное количество цифр);</li>
+<li><strong>Т</strong> – точность (число цифр после запятой);</li>
+<li><strong>НН</strong> – наличие ведущих нулей;</li>
+<li><strong>ОН</strong> – отсутствие ведущих нулей;</li>
+<li><strong>ВЗ</strong> – обязательный вывод знака.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Номер варианта</th>
+<th>Строка str(String)</th>
+<th>Целое a (int)</th>
+<th>Целое b(short)</th>
+<th>Целое с (byte)</th>
+<th>Действительное d(double)</th>
+<th>Действительное f(float)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td>Фамилия_Группа:</td>
+<td>С10, Ш8, НН, ВЗ</td>
+<td>С8</td>
+<td>С16</td>
+<td>Ш10, Т5, НН</td>
+<td>Ш8, Т3, ОН</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>Фамилия_Группа:</td>
+<td>С16</td>
+<td>С10, Ш5, ОН</td>
+<td>С8</td>
+<td>Ш5, Т3, ОН, ВЗ</td>
+<td>Ш7, Т2, НН</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>Фамилия_Группа:</td>
+<td>C8</td>
+<td>C16</td>
+<td>C10, Ш6, ОН</td>
+<td>Ш8, T4, НН</td>
+<td>Ш6, Т3, ОН, ВЗ</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>Фамилия_Группа:</td>
+<td>С16</td>
+<td>С8</td>
+<td>С10, Ш8, НН</td>
+<td>Ш7, T3, ОН, ВЗ</td>
+<td>Ш9, Т4, НН</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>Фамилия_Группа:</td>
+<td>С10, Ш5, ОН, ВЗ</td>
+<td>С8</td>
+<td>С16</td>
+<td>Ш8, T2, НН</td>
+<td>Ш10, Т4, ОН</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>Фамилия_Группа:</td>
+<td>С10, Ш5, ОН</td>
+<td>С8</td>
+<td>С16</td>
+<td>Ш8, T2, ОН, ВЗ</td>
+<td>Ш6, Т3, НН</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td>Фамилия_Группа:</td>
+<td>С8</td>
+<td>С10, Ш9, НН</td>
+<td>С16</td>
+<td>Ш10, T4, ОН</td>
+<td>Ш8, Т2, НН, ВЗ</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td>Фамилия_Группа:</td>
+<td>С16</td>
+<td>С10, Ш7, ОН, ВЗ</td>
+<td>С8</td>
+<td>Ш12, T6, НН</td>
+<td>Ш6, Т3, ОН</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td>Фамилия_Группа:</td>
+<td>С16</td>
+<td>С8</td>
+<td>С10, Ш8, НН</td>
+<td>Ш11, T5, ОН, ВЗ</td>
+<td>Ш9, Т4, НН</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td>Фамилия_Группа:</td>
+<td>С10, Ш7, ОН, ВЗ</td>
+<td>С8</td>
+<td>С16</td>
+<td>Ш14, T5, НН</td>
+<td>Ш8, Т3, ОН</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td>Фамилия_Группа:</td>
+<td>С10, Ш8, НН, ВЗ</td>
+<td>С8</td>
+<td>С16</td>
+<td>Ш10, Т5, НН</td>
+<td>Ш8, Т3, ОН</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td>Фамилия_Группа:</td>
+<td>С16</td>
+<td>С10, Ш5, ОН</td>
+<td>С8</td>
+<td>Ш5, Т3, ОН, ВЗ</td>
+<td>Ш7, Т2, НН</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td>Фамилия_Группа:</td>
+<td>C8</td>
+<td>C16</td>
+<td>C10, Ш6, ОН</td>
+<td>Ш8, T4, НН</td>
+<td>Ш6, Т3, ОН, ВЗ</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td>Фамилия_Группа:</td>
+<td>С16</td>
+<td>С8</td>
+<td>С10, Ш8, НН</td>
+<td>Ш7, T3, ОН, ВЗ</td>
+<td>Ш9, Т4, НН</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td>Фамилия_Группа:</td>
+<td>С10, Ш5, ОН, ВЗ</td>
+<td>С8</td>
+<td>С16</td>
+<td>Ш8, T2, НН</td>
+<td>Ш10, Т4, ОН</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td>Фамилия_Группа:</td>
+<td>С10, Ш5, ОН</td>
+<td>С8</td>
+<td>С16</td>
+<td>Ш8, T2, ОН, ВЗ</td>
+<td>Ш6, Т3, НН</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td>Фамилия_Группа:</td>
+<td>С8</td>
+<td>С10, Ш9, НН</td>
+<td>С16</td>
+<td>Ш10, T4, ОН</td>
+<td>Ш8, Т2, НН, ВЗ</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td>Фамилия_Группа:</td>
+<td>С16</td>
+<td>С10, Ш7, ОН, ВЗ</td>
+<td>С8</td>
+<td>Ш12, T6, НН</td>
+<td>Ш6, Т3, ОН</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td>Фамилия_Группа:</td>
+<td>С16</td>
+<td>С8</td>
+<td>С10, Ш8, НН</td>
+<td>Ш11, T5, ОН, ВЗ</td>
+<td>Ш9, Т4, НН</td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td>Фамилия_Группа:</td>
+<td>С10, Ш7, ОН, ВЗ</td>
+<td>С8</td>
+<td>С16</td>
+<td>Ш14, T5, НН</td>
+<td>Ш8, Т3, ОН</td>
+</tr>
+<tr>
+<td align="center">21</td>
+<td>Фамилия_Группа:</td>
+<td>С10, Ш8, НН, ВЗ</td>
+<td>С8</td>
+<td>С16</td>
+<td>Ш10, Т5, НН</td>
+<td>Ш8, Т3, ОН</td>
+</tr>
+<tr>
+<td align="center">22</td>
+<td>Фамилия_Группа:</td>
+<td>С16</td>
+<td>С10, Ш5, ОН</td>
+<td>С8</td>
+<td>Ш5, Т3, ОН, ВЗ</td>
+<td>Ш7, Т2, НН</td>
+</tr>
+<tr>
+<td align="center">23</td>
+<td>Фамилия_Группа:</td>
+<td>C8</td>
+<td>C16</td>
+<td>C10, Ш6, ОН</td>
+<td>Ш8, T4, НН</td>
+<td>Ш6, Т3, ОН, ВЗ</td>
+</tr>
+<tr>
+<td align="center">24</td>
+<td>Фамилия_Группа:</td>
+<td>С16</td>
+<td>С8</td>
+<td>С10, Ш8, НН</td>
+<td>Ш7, T3, ОН, ВЗ</td>
+<td>Ш9, Т4, НН</td>
+</tr>
+<tr>
+<td align="center">25</td>
+<td>Фамилия_Группа:</td>
+<td>С10, Ш5, ОН, ВЗ</td>
+<td>С8</td>
+<td>С16</td>
+<td>Ш8, T2, НН</td>
+<td>Ш10, Т4, ОН</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">Рекомендации по составлению отчета по лабораторной работе</h3>
+<p>В дополнение к общим требованиям к отчету, представленным в разделе 1, опишите по пунктам все исследования, которые вы провели в окне кода (п. Работа в окне кода BlueJ) и сделанные вами выводы.</p>
+<h3 id="_11">Контрольные вопросы</h3>
+<ol>
+<li>Какие простые типы данных существуют в <em>Java</em>?</li>
+<li>От чего зависит диапазон значений числовых типов?</li>
+<li>Какой из типов обеспечивает большую точность <code>double</code> или <code>float</code>?</li>
+<li>Что такое литерал?</li>
+<li>Как задается переменная?</li>
+<li>Как задается именованная константа?</li>
+<li>Как задать литерал типа <code>float</code>?</li>
+<li>Как задать литерал типа <code>long</code>?</li>
+<li>Опишите, как работает оператор присваивания?</li>
+<li>Когда возникает ошибка «Потеря точности»?</li>
+<li>Какие возможности предоставляет окно кода <em>BlueJ</em>?</li>
+<li>Чему равно значение выражения 2&lt;5? Какого оно типа?</li>
+<li>Чему равно значение выражения 10&lt;=5? Какого оно типа?</li>
+<li>Какие возможности предоставляет оператор форматированного вывода <code>System.out.printf (format, list)</code>;
+15) Перечислите возможности текстового процессора Microsoft Word, которые вы использовали для оформления списков при выполнении отчета по лабораторной работе.</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            К началу
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул">
+      
+        
+        <a href="../lab11/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Лабораторная работа №11" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              Лабораторная работа №11
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../lab3/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Лабораторная работа №3" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              Лабораторная работа №3
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Сделано с &#10084; Денисом Оболенским
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/readonlyden/Programming-101" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://vk.com/sevsu_itiks" target="_blank" rel="noopener" title="vk.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M545 117.7c3.7-12.5 0-21.7-17.8-21.7h-58.9c-15 0-21.9 7.9-25.6 16.7 0 0-30 73.1-72.4 120.5-13.7 13.7-20 18.1-27.5 18.1-3.7 0-9.4-4.4-9.4-16.9V117.7c0-15-4.2-21.7-16.6-21.7h-92.6c-9.4 0-15 7-15 13.5 0 14.2 21.2 17.5 23.4 57.5v86.8c0 19-3.4 22.5-10.9 22.5-20 0-68.6-73.4-97.4-157.4-5.8-16.3-11.5-22.9-26.6-22.9H38.8c-16.8 0-20.2 7.9-20.2 16.7 0 15.6 20 93.1 93.1 195.5C160.4 378.1 229 416 291.4 416c37.5 0 42.1-8.4 42.1-22.9 0-66.8-3.4-73.1 15.4-73.1 8.7 0 23.7 4.4 58.7 38.1 40 40 46.6 57.9 69 57.9h58.9c16.8 0 25.3-8.4 20.4-25-11.2-34.9-86.9-106.7-90.3-111.5-8.7-11.2-6.2-16.2 0-26.2.1-.1 72-101.3 79.4-135.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.sevsu.ru/" target="_blank" rel="noopener" title="www.sevsu.ru" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top"], "translations": {"clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "search.config.lang": "ru", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\u041f\u043e\u0438\u0441\u043a", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version.title": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.649a939e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

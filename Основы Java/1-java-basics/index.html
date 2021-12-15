@@ -1,0 +1,2344 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://readonlyden.github.io/Programming-101/%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/1-java-basics/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.2">
+    
+    
+      
+        <title>1. Основы Java. - СевГУ - П:БПОИ / П:ЯВУ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f7951f6f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-44C4RXEXJJ"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-44C4RXEXJJ",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-44C4RXEXJJ"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#main" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="СевГУ - П:БПОИ / П:ЯВУ" class="md-header__button md-logo" aria-label="СевГУ - П:БПОИ / П:ЯВУ" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            СевГУ - П:БПОИ / П:ЯВУ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Основы Java.
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent=""  aria-label="Включить темную тему"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Включить темную тему" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Включить светлую тему"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Включить светлую тему" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Очистить" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Главная
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Git/in-real-world/" class="md-tabs__link">
+        Git
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../0-prerequisites/" class="md-tabs__link md-tabs__link--active">
+        Основы Java
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/" class="md-tabs__link">
+        ПБПОИ
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%D0%9F%D0%AF%D0%92%D0%A3/faq/" class="md-tabs__link">
+        ПЯВУ
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="СевГУ - П:БПОИ / П:ЯВУ" class="md-nav__button md-logo" aria-label="СевГУ - П:БПОИ / П:ЯВУ" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    СевГУ - П:БПОИ / П:ЯВУ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Главная
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Git/in-real-world/" class="md-nav__link">
+        Git в реальной разработке
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Основы Java
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Основы Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Основы Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0-prerequisites/" class="md-nav__link">
+        0. Java. JVM, JRE, JDK. Среды разработки. Системы сборки.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          1. Основы Java.
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        1. Основы Java.
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание раздела">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание раздела
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    Базовая программа. Запуск программы. Метод main
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Структура программы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Комментарии
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Переменные и константы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Типы данных
+  </a>
+  
+    <nav class="md-nav" aria-label="Типы данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Примитивные типы
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Строки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Ссылочные типы
+  </a>
+  
+    <nav class="md-nav" aria-label="Ссылочные типы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stack-heap" class="md-nav__link">
+    Stack(Стек) и Heap(Куча)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Ссылочные типы и семантика ссылок
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    Классы-оболочки для примитивных типов
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Значения переменных разных типов по умолчанию
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Целые числа
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Вещественные числа
+  </a>
+  
+    <nav class="md-nav" aria-label="Вещественные числа">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#math" class="md-nav__link">
+    Класс Math
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Символы и строки
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    Приведение типов
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    Операторы
+  </a>
+  
+    <nav class="md-nav" aria-label="Операторы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    Оператор присваивания
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    Арифметические операторы
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    Операторы сравнения
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    Логические операторы
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    Побитовые операции
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    Тернарный оператор
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    Приоритет операций
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-java" class="md-nav__link">
+    Простой ввод-вывод в Java
+  </a>
+  
+    <nav class="md-nav" aria-label="Простой ввод-вывод в Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    Вывод на консоль
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ⭐ Ввод с консоли
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-conditionals-loops-functions/" class="md-nav__link">
+        2. Условные операторы. Операторы циклов. Функции и рекурсия. Массивы.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-oop/" class="md-nav__link">
+        3. Объектно-ориентированное программирование
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-collections/" class="md-nav__link">
+        4. Коллекции. Потоки ввода-вывода.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-gc/" class="md-nav__link">
+        5. ⭐ Устройство JVM. Сборщик мусора (GC)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/">ПБПОИ</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="ПБПОИ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          ПБПОИ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/books/" class="md-nav__link">
+        Книги и ресурсы
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab1/" class="md-nav__link">
+        Лабораторная работа №1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab10/" class="md-nav__link">
+        Лабораторная работа №10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab11/" class="md-nav__link">
+        Лабораторная работа №11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab2/" class="md-nav__link">
+        Лабораторная работа №2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab3/" class="md-nav__link">
+        Лабораторная работа №3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab4/" class="md-nav__link">
+        Лабораторная работа №4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab5/" class="md-nav__link">
+        Лабораторная работа №5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab6/" class="md-nav__link">
+        Лабораторная работа №6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab7/" class="md-nav__link">
+        Лабораторная работа №7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/practice/" class="md-nav__link">
+        ⭐ Практическое задание
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/tasks/" class="md-nav__link">
+        Задачи
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          ПЯВУ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ПЯВУ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          ПЯВУ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%AF%D0%92%D0%A3/faq/" class="md-nav__link">
+        Небольшой конспект по ООП
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%AF%D0%92%D0%A3/tasks/" class="md-nav__link">
+        Задачи и идеи для проектов
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание раздела">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание раздела
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main" class="md-nav__link">
+    Базовая программа. Запуск программы. Метод main
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Структура программы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Комментарии
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Переменные и константы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Типы данных
+  </a>
+  
+    <nav class="md-nav" aria-label="Типы данных">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Примитивные типы
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Строки
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Ссылочные типы
+  </a>
+  
+    <nav class="md-nav" aria-label="Ссылочные типы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stack-heap" class="md-nav__link">
+    Stack(Стек) и Heap(Куча)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Ссылочные типы и семантика ссылок
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    Классы-оболочки для примитивных типов
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Значения переменных разных типов по умолчанию
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Целые числа
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Вещественные числа
+  </a>
+  
+    <nav class="md-nav" aria-label="Вещественные числа">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#math" class="md-nav__link">
+    Класс Math
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Символы и строки
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    Приведение типов
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    Операторы
+  </a>
+  
+    <nav class="md-nav" aria-label="Операторы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    Оператор присваивания
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    Арифметические операторы
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    Операторы сравнения
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    Логические операторы
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    Побитовые операции
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    Тернарный оператор
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    Приоритет операций
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-java" class="md-nav__link">
+    Простой ввод-вывод в Java
+  </a>
+  
+    <nav class="md-nav" aria-label="Простой ввод-вывод в Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    Вывод на консоль
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ⭐ Ввод с консоли
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+  <h1>1. Основы Java.</h1>
+
+<h2 id="main">Базовая программа. Запуск программы. Метод main</h2>
+<p><em>Java</em> является <strong><em>объектно-ориентированным</em></strong> языком, поэтому всю программу можно представить как <strong>набор взаимодействующих между собой классов и объектов</strong>. Простейшая программа на Java представлена следующим образом:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Program</span><span class="p">{</span> 
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]</span><span class="p">){</span>    
+         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello Java!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>То есть основу программы составляет класс <strong><code>Program</code></strong>. При определении класса вначале идет модификатор доступа <strong><code>public</code></strong>, который указывает, что данный класс будет доступен всем, в том числе для <em>JVM</em>, и мы сможем его запустить из командной строки. Далее идет ключевое слово <strong><code>class</code></strong>, а затем название класса. После названия класса идет блок кода, в котором расположено содержимое класса.</p>
+<p>Входной точкой в программу на языке Java является метод <strong><code>main</code></strong>, который определен в классе <strong><code>Program</code></strong>. Именно с него начинается выполнение программы. Он обязательно должен присутствовать в программе. При этом его заголовок может быть <strong>только</strong> таким:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]</span><span class="p">)</span>
+</code></pre></div>
+<p>При запуске приложения виртуальная машина <em>Java</em> (<em>JVM</em>) ищет в главном классе программы метод <strong><code>main</code></strong> с подобным заголовком, и после его обнаружения запускает его. Если метод отсутствует, то компиляция возможна, но при запуске будет получена ошибка <code>Error: Main method not found</code>.</p>
+<p>Вначале заголовка метода идет модификатор <strong><code>public</code></strong>, который указывает, что метод будет доступен извне. Слово <strong><code>static</code></strong> указывает, что метод <strong><code>main</code></strong> - статический (не связан с конкретным объектом), а слово <strong><code>void</code></strong> - что он не возвращает никакого значения. Далее в скобках у нас идут параметры метода - <strong><code>String args[]</code></strong> - это массив <strong><code>args</code></strong>, который хранит значения типа <strong><code>String</code></strong>, то есть строки. При запуске программы через этот массив мы можем передать в программу различные данные.</p>
+<p>После заголовка метода идет его блок, который содержит набор выполняемых инструкций.</p>
+<h2 id="_1">Структура программы</h2>
+<p>Основным строительным блоком программы на языке <em>Java</em> являются <strong>инструкции</strong> (<em>statement</em>). Каждая инструкция выполняет некоторое действие, например, вызовы методов, объявление переменных и присвоение им значений. После завершения инструкции в <em>Java</em> ставится точка с запятой (<code>;</code>). Данный знак указывает компилятору на конец инструкции. Например:</p>
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello Java!&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Данная строка представляет вызов метода <code>System.out.println</code>, который выводит на консоль строку <code>Hello Java!</code>. В данном случае вызов метода является инструкцией и поэтому завершается точкой с запятой.</p>
+<p>Кроме отдельных инструкций распространенной конструкцией является <strong>блок кода</strong>. Блок кода содержит набор инструкций, он заключается в фигурные скобки, а инструкции помещаются между открывающей и закрывающей фигурными скобками:</p>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello!&quot;</span><span class="p">);</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Welcome to Java!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+В этом блоке кода две инструкции, которые выводят на консоль определенную строку.</p>
+<h2 id="_2">Комментарии</h2>
+<p>Код программы может содержать комментарии. Комментарии позволяют понять смысл программы, что делают те или иные ее части. При компиляции комментарии игнорируются и не оказывают никакого влияния на работу приложения и на его размер.</p>
+<p>В Java есть два типа комментариев: однострочный и многострочный. Однострочный комментарий размещается на одной строке после двойного слеша <code>//</code>. А многострочный комментарий заключается между символами <code>/* текст комментария */</code>. Он может размещаться на нескольких строках. Например:</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/*</span>
+<span class="cm">    многострочный комментарий</span>
+<span class="cm">    Объявление нового класса,</span>
+<span class="cm">    который содержит код программы</span>
+<span class="cm">*/</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Program</span><span class="p">{</span>   <span class="c1">// начало объявления класса Program</span>
+
+    <span class="c1">// определение метода main</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="p">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]</span><span class="p">){</span>    <span class="c1">// объявление нового метод  </span>
+         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello Java!&quot;</span><span class="p">);</span>     <span class="c1">// вывод строки на консоль</span>
+    <span class="p">}</span>   <span class="c1">// конец объявления нового метода</span>
+<span class="p">}</span> <span class="c1">// конец объявления класса Program</span>
+</code></pre></div>
+<p>Существует продвинутый (и более сложный формат комментариев), называемый <strong>JavaDoc</strong>. Он используется совместно с одноименной утилитой, входящей в состав JDK, и предназначен для создания документации разработчика из исходного кода. Такие комментарии используются при разработке крупных и средних проектов, и нужны для описания классов, методов и других объектов с целью упрощения разработки. Комментарий <em>JavaDoc</em> пишется на языке <em>HTML</em>, может содержать метаинформацию (например, описание параметров метода). Такие комментарии также поддерживаются средами разработки для создания подсказок. Пример метода с <em>JavaDoc</em> комментариями представлен ниже. <em>JavaDoc</em> комментарий является обычным многострочным комментарием, но начинается с <code>/**</code> на отдельной строчке.</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/**</span>
+<span class="cm">* Returns a sum of two integers. </span>
+<span class="cm">* Please refer to &lt;a href=&quot;url&quot;&gt;Calculator&lt;/a&gt;</span>
+<span class="cm">* for details.</span>
+<span class="cm">*</span>
+<span class="cm">* @param  first  first number</span>
+<span class="cm">* @param  second second number</span>
+<span class="cm">* @return      the sum of two numbers</span>
+<span class="cm">* @see         Integer</span>
+<span class="cm">*/</span>
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSumOfTwoNumbers</span><span class="p">(</span><span class="kt">int</span> <span class="n">first</span><span class="p">,</span> <span class="kt">int</span> <span class="n">second</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">first</span> <span class="o">+</span> <span class="n">second</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_3">Переменные и константы</h2>
+<p>Для хранения данных в программе предназначены <strong>переменные</strong>. </p>
+<p><strong>Переменная</strong> – это именованная область памяти, в которой программа может установить некоторое значение. Значение переменной может изменяться во время выполнения программы.</p>
+<p>Переменная определяется комбинацией <strong>идентификатора</strong> (имени), <strong>типа</strong> и необязательного инициализатора. Переменная должна быть объявлена перед ее использованием.</p>
+<p><strong>Идентификаторы</strong> используются в качестве имен классов, методов и переменных. Идентификатор может быть любой последовательностью букв верхнего и нижнего регистра (в том числе, кириллических), чисел или символов подчеркивания <code>_</code> и знака доллара (<code>$</code>). Он не должен начинаться с цифры, чтобы не вступать в конфликт с числовой константой. Язык <em>Java</em> чувствителен к регистру, поэтому идентификатор <code>VALUE</code>, например, отличается от идентификатора <code>Value</code>.</p>
+<p><strong>Тип</strong>, также называемый <strong>тип данных</strong>, определяет, какую информацию может хранить переменная или диапазон допустимых значений.</p>
+<p>Синтаксис объявления переменной:
+<div class="highlight"><pre><span></span><code>type identifier [=value][, identifier [=value]…];
+</code></pre></div></p>
+<ul>
+<li><code>type</code> – один из типов <em>Java</em>, имя класса или интерфейса,</li>
+<li><code>identifier</code> – имя переменной,</li>
+<li><code>value</code> – литерал (значение подходящего типа) или <em>выражение</em>.</li>
+</ul>
+<p>Примеры объявления переменной:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Начиная с <strong>Java 10</strong> в язык было добавлено ключевое слово <strong><code>var</code></strong>, которое также позволяет определять переменную:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>  <span class="c1">// 10</span>
+</code></pre></div>
+<p>Слово <code>var</code> ставится вместо типа данных, а сам тип переменной <em>выводится</em> из того значения, которое ей присваивается. Например, переменной <code>x</code> присваивается число <code>10</code>, значит, переменная будет представлять целочисленный тип <code>int</code>.</p>
+<p>Но если переменная объявляется с помощью <code>var</code>, то ее необходимо <strong>обязательно</strong> инициализировать, то есть предоставить ей начальное значение, иначе мы получим ошибку, как, например, в следующем случае:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="n">x</span><span class="p">;</span>      <span class="c1">// ! Ошибка, переменная не инициализирована, непонятно какой тип данных</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div>
+<p>Начинающим разработчикам рекомендуется использовать <code>var</code> в тех случаях, когда тип легко понять из выражения справа, и использовать явное указание типа в других случаях.</p>
+<p>Кроме переменных, в <em>Java</em> для хранения данных можно использовать <strong>константы</strong>. В отличие от переменных константам можно присвоить значение только один раз. Константа объявляется также, как и переменная, только вначале идет ключевое слово <strong><code>final</code></strong>:</p>
+<p><div class="highlight"><pre><span></span><code><span class="kd">final</span> <span class="kt">int</span> <span class="n">LIMIT</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">LIMIT</span><span class="p">);</span>  <span class="c1">// 5</span>
+<span class="c1">// LIMIT=57; // так мы уже не можем написать, так как LIMIT - константа</span>
+</code></pre></div>
+<em>Как правило</em> (зависит от стиля кодирования на проекте), константы имеют имена в верхнем регистре.</p>
+<p>Константы позволяют задать такие переменные, которые не должны больше изменяться. Например, если у нас есть переменная для хранения числа <code>pi</code>, то мы можем объявить ее константой, так как ее значение постоянно.</p>
+<h2 id="_4">Типы данных</h2>
+<p>Язык <em>Java</em> является строго типизированным. А это значит, что каждая переменная и константа представляет определенный тип и данный тип строго определен. Тип данных определяет диапазон значений, которые может хранить переменная или константа.</p>
+<p>В <em>Java</em> существует два вида типов данных - <strong>примитивные</strong>(рассмотрены выше) и <strong>ссылочные</strong>.</p>
+<h3 id="_5">Примитивные типы</h3>
+<p>Итак, рассмотрим систему встроенных базовых типов данных, которая используется для создания переменных в <em>Java</em>. А она представлена следующими типами.</p>
+<ul>
+<li><code>boolean</code>: хранит значение true или false:
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span> <span class="n">canDestroySpaceships</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="kt">boolean</span> <span class="n">canDestroyEnemies</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</code></pre></div></li>
+<li><code>byte</code>: хранит целое число от -128 до 127 и занимает <strong>1 байт</strong>
+<div class="highlight"><pre><span></span><code><span class="kt">byte</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+</code></pre></div></li>
+<li><code>short</code>: хранит целое число от -32768 до 32767 и занимает <strong>2 байта</strong>
+<div class="highlight"><pre><span></span><code><span class="kt">short</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="kt">short</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+</code></pre></div></li>
+<li><code>int</code>: хранит целое число от -2147483648 до 2147483647 и занимает <strong>4 байта</strong>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>
+</code></pre></div></li>
+<li><code>long</code>: хранит целое число от –9 223 372 036 854 775 808 до 9 223 372 036 854 775 807 и занимает <strong>8 байт</strong>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kt">long</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></li>
+<li><code>float</code>: хранит число с плавающей точкой от -3.4✕10<sup>38</sup> до 3.4✕10<sup>38</sup> и занимает <strong>4 байта</strong>. В качестве разделителя целой и дробной части в дробных литералах используется точка.
+<div class="highlight"><pre><span></span><code><span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">8.5F</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">2.7F</span><span class="p">;</span>
+</code></pre></div></li>
+<li><code>double</code>: хранит число с плавающей точкой от ±4.9✕10<sup>-324</sup> до ±1.8✕10<sup>308</sup> и занимает <strong>8 байт</strong>. В качестве разделителя целой и дробной части в дробных литералах используется точка.
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">8.5</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">2.7</span><span class="p">;</span>
+</code></pre></div></li>
+<li><code>char</code>: хранит одиночный символ в кодировке <strong>UTF-16</strong> (Unicode) и занимает <strong>2 байта</strong>, поэтому диапазон хранимых значений от 0 до 65535.
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">a</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span>
+</code></pre></div></li>
+</ul>
+<p>При этом переменная может принимать только те значения, которые соответствуют ее типу. Если переменная представляет целочисленный тип, то она не может хранить дробные числа.</p>
+<h3 id="_6">Строки</h3>
+<p>Тип <code>String</code> не является примитивным типом данных, однако это один из наиболее используемых типов в <em>Java</em>.  <code>String</code>  предназначен для хранения строк текста. Несколько примеров использования String:
+<div class="highlight"><pre><span></span><code><span class="c1">//Создание строки с помощью конструктора </span>
+<span class="n">String</span> <span class="n">phrase</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="s">&quot;Wabba lubba dub dub&quot;</span><span class="p">);</span>
+<span class="c1">//Можно также создать строку используя строковый литерал</span>
+<span class="n">String</span> <span class="n">answer</span> <span class="o">=</span> <span class="s">&quot;Ответ - 42&quot;</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="_7">Ссылочные типы</h3>
+<p>В ссылочные типы входят все <em>массивы</em>, <em>строки</em> (вышеупомянутый тип <code>String</code>), <em>классы</em>, <em>интерфейсы</em>.</p>
+<p>Для того, чтобы понять ссылочные типы максимально полно, нужно разобраться с понятиями <strong>стек</strong> и <strong>куча</strong>, а также кратко изучить то, как Java работает с памятью.</p>
+<p>Для оптимальной работы приложения <em>JVM</em> делит память на область <em>стека</em> (<em>stack</em>) и область <em>кучи</em> (<em>heap</em>). Всякий раз, когда мы объявляем новые переменные, создаем объекты или вызываем новый метод, <em>JVM</em> выделяет память для этих операций в стеке или в куче.</p>
+<h4 id="stack-heap"><strong>Stack(Стек)</strong> и <strong>Heap(Куча)</strong></h4>
+<p><img alt="Рисунок 1. Стек и куча" src="../../assets/images/%D0%9F%D0%91%D0%9F%D0%9E%D0%98/shared/stack-vs-heap-java.png" /></p>
+<p><em>Рисунок 1. Стек и куча</em></p>
+<p><strong>Стек</strong> работает по схеме <em>LIFO</em> (<em>последним вошел, первым вышел</em> - <em>last in first out</em>). Всякий раз, когда вызывается новый метод, содержащий примитивные значения или ссылки на объекты, то на вершине стека под них выделяется блок памяти, называемый фреймом.
+Когда метод завершает выполнение, блок памяти, отведенный для его нужд, очищается, и пространство становится доступным для следующего метода.</p>
+<p>Когда метод завершает выполнение, соответствующий фрейм стека сбрасывается, поток возвращается к вызывающему методу, и пространство становится доступным для следующего метода.</p>
+<p>Особенности стека:</p>
+<ul>
+<li>Он заполняется и освобождается по мере вызова и завершения новых методов</li>
+<li>Переменные в стеке существуют до тех пор, пока выполняется метод в котором они были созданы</li>
+<li>Если память стека будет заполнена, <em>Java</em> бросит исключение <code>java.lang.StackOverFlowError</code></li>
+<li>Доступ к этой области памяти осуществляется <em>быстрее</em>, чем к куче</li>
+<li>Является потокобезопасным, поскольку для каждого потока создается свой отдельный стек</li>
+</ul>
+<p><strong>Куча</strong> используется для объектов. Новые объекты всегда создаются в куче, а ссылки на них хранятся в стеке.
+Эти объекты <em>имеют глобальный доступ</em> и могут быть доступны из любого места программы.</p>
+<p>Особенности кучи:</p>
+<ul>
+<li>Когда эта область памяти полностью заполняется, <em>Java</em> бросает <code>java.lang.OutOfMemoryError</code></li>
+<li>Доступ к ней <em>медленнее</em>, чем к стеку, но при этом размер кучи гораздо больше, чем размер стека</li>
+<li>Эта память, в отличие от стека, автоматически не освобождается. Для сбора неиспользуемых объектов используется <em>сборщик мусора</em> (<em>GC</em>)</li>
+<li>В отличие от стека, куча <em>не является потокобезопасной и ее необходимо контролировать</em>, правильно синхронизируя код.</li>
+</ul>
+<h4 id="_8">Ссылочные типы и семантика ссылок</h4>
+<p><img alt="Рисунок 3. Ссылочные типы" src="../../assets/images/%D0%9F%D0%91%D0%9F%D0%9E%D0%98/shared/references.jpg" /></p>
+<p><em>Рисунок 3. Примитивные и ссылочные типы</em></p>
+<p><strong>Примитивные типы</strong> - это основные типы данных: <code>byte</code> , <code>short</code> , <code>int</code> , <code>long</code> , <code>float</code> , <code>double</code> , <code>boolean</code> , <code>char</code>. Примитивные переменные хранят значения как есть, т.е соответствующие ячейки памяти(в сколько-то там байт) будут хранить само значение. <em>Примитивный тип описывает значение</em>.</p>
+<p><strong>Ссылочные типы</strong> хранят не значения, а адреса мест в памяти (а если быть точнее адрес в <em>куче</em>, так как все объекты живут в куче), в которых хранятся данные. Это любой экземпляр класса (объект), а также массивы, строки и так далее.</p>
+<p>Любая переменная ссылочного типа (<em>reference type</em>) хранит в себе или ссылку на объект, или <code>null</code>, если она не связана с объектом.</p>
+<div class="admonition note">
+<p class="admonition-title">Вопрос на засыпку</p>
+<p>А где же живут примитивные типы? Если ссылочные типы указывают на значения в куче, то примитивные живут в стеке, да? Как бы да, но вообще-то нет. Если переменная примитивного типа является частью любого объекта, то ее значение будет жить в куче.</p>
+</div>
+<p><img alt="Рисунок 2. Ссылочные типы" src="../../assets/images/%D0%9F%D0%91%D0%9F%D0%9E%D0%98/shared/references2.png" /></p>
+<p><em>Рисунок 2. Примитивные и ссылочные типы</em></p>
+<p>В <em>Java</em> параметры всегда передаются только <em>по значению</em>, что определяется как <em>«скопировать значение и передать копию»</em>. С примитивами это будет копия содержимого. Со ссылками - тоже копия содержимого, т.е. копия ссылки. При этом внутренние члены ссылочных типов через такую копию изменить возможно, а вот саму ссылку, указывающую на экземпляр - нет. Несколько переменных ссылочного типа могут указывать на один и тот же объект. При присвоении переменной примитивных типов мы копируем значение, а при присвоении переменной ссылочного типа - мы копируем ссылку.</p>
+<p>Ссылочные или непримитивные типы данных могут быть любого размера (и как минимум занимают размер ссылки).</p>
+<p>При задании значения переменной ссылочного типа необходимо выделить память. В <em>Java</em> для этого использовуется ключевое слово <code>new</code>. Подробнее про это будет в разделе про массивы и про объекты.</p>
+<h4 id="-">Классы-оболочки для примитивных типов</h4>
+<p>Для каждого примитивного типа существует, соответствующий ему ссылочный тип, так называемые <em>классы-оболочки</em>:</p>
+<ul>
+<li><code>Byte</code></li>
+<li><code>Short</code></li>
+<li><code>Integer</code></li>
+<li><code>Long</code></li>
+<li><code>Float</code></li>
+<li><code>Double</code></li>
+<li><code>Character</code></li>
+<li><code>Boolean</code></li>
+</ul>
+<p>В отличие от примитивных типов, они пишутся с заглавной буквы. Эти типы соответствуют примитивным типам, однако являются ссылочными. Их классы cодержат методы для преобразования типов, а также другие константы и методы полезные при работе с примитивными типами данных.</p>
+<p>Классы-обертки являются <em>неизменяемыми</em>: это означает, что после создания объекта его состояние (значение поля <code>value</code>) не может быть изменено; и задекларированы, как <code>final</code> (от этих классов невозможно наследоваться).</p>
+<p><em>Java</em> автоматически производит преобразования между примитивными типами и их обертками:
+<div class="highlight"><pre><span></span><code><span class="n">Integer</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>          <span class="c1">// autoboxing</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// unboxing</span>
+</code></pre></div></p>
+<p>Процесс преобразования примитивных типов в ссылочные называется автоупаковкой (<em>autoboxing</em>), а обратный ему — автораспаковкой (<em>unboxing</em>).</p>
+<div class="admonition note">
+<p class="admonition-title">Замечание</p>
+<p><em>Boxing</em> и <em>unboxing</em> достаточно дорогостоящие операции, поэтому если вы в цикле просто так решите туда-сюда выполнять эти операции, не удивляйтесь низкой производительности.</p>
+</div>
+<p>Классы-оболочки позволяют работать с примитивными типами там, где невозможно с ними работать напрямую, а также дают больше возможностей. </p>
+<h3 id="_9">Значения переменных разных типов по умолчанию</h3>
+<ul>
+<li>Числа инициализируются <code>0</code> или <code>0.0</code>; </li>
+<li><code>char</code> — <code>\u0000</code>;</li>
+<li><code>boolean</code> — <code>false</code>;</li>
+<li>Объекты (в том числе <code>String</code>) — <code>null</code>.</li>
+</ul>
+<h2 id="_10">Целые числа</h2>
+<p>Все целочисленные литералы, например, числа 10, 4, -5, воспринимаются как значения типа <code>int</code>, однако мы можем присваивать целочисленные литералы другим целочисленным типам: <code>byte</code>, <code>long</code>, <code>short</code>. В этом случае <em>Java</em> автоматически осуществляет соответствующие преобразования:
+<div class="highlight"><pre><span></span><code><span class="kt">byte</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kt">short</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kt">long</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">100500</span><span class="p">;</span>
+</code></pre></div></p>
+<p>При присвоении переменной типа <code>long</code> очень большого числа, которое выходит за пределы допустимых значений для типа <code>int</code>, то мы столкнемся с ошибкой во время компиляции:
+<div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">100500100500</span><span class="p">;</span> <span class="c1">// Ошибка компиляции</span>
+</code></pre></div></p>
+<p>В данной ситуации число 100500100500 является допустимым для типа <code>long</code>, но выходит за предельные значения для типа <code>int</code>. И так как <em>все целочисленные значения по умолчанию расцениваются как значения типа</em> <code>int</code>, то компилятор укажет нам на ошибку. Чтобы решить проблему, надо добавить к числу суффикс <code>l</code> или <code>L</code>, который указывает, что число представляет тип <code>long</code>:
+<div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">100500100500L</span><span class="p">;</span> <span class="c1">// Всё ОК</span>
+</code></pre></div></p>
+<p>Как правило, значения для целочисленных переменных задаются в десятичной системе счисления, однако также можно применять двоичную, восьмеричную и шестнадцатеричную системы:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">hexNum</span> <span class="o">=</span> <span class="mh">0x6F</span><span class="p">;</span> <span class="c1">// 16-тиричная система, число 111</span>
+<span class="kt">int</span> <span class="n">octNum</span> <span class="o">=</span> <span class="mo">010</span><span class="p">;</span> <span class="c1">// 8-ричная система, число 8</span>
+<span class="kt">int</span> <span class="n">binaryNum</span> <span class="o">=</span> <span class="mb">0b1101</span><span class="p">;</span> <span class="c1">// 2-ичная система, число 13</span>
+</code></pre></div></p>
+<p>Для задания шестнадцатеричного значения после символов <code>0x</code> (или <code>0X</code>) указывается число в шестнадцатеричном формате. Таким же образом восьмеричное значение указывается после символа <code>0</code>, а двоичное значение - после символов <code>0b</code> или <code>0B</code>.</p>
+<p>Также целые числа поддерживают разделение разрядов числа с помощью знака подчеркивания:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">123_456</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">234_567__789</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>  <span class="c1">// 123456</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>  <span class="c1">// 234567789</span>
+</code></pre></div></p>
+<h2 id="_11">Вещественные числа</h2>
+<p>Вещественные числа в Java представлены типами данных <code>float</code> и <code>double</code>. <code>float</code> является 32-битным значением с плавающей точкой, с обычной точностью, а <code>double</code> представляет 64-битное значение с плавающей точкой, с двойной точностью. </p>
+<p>Оба типа соответствуют стандарту <strong>IEEE 754-1985</strong>, который определяет формат чисел и арифметические операции, применимые к этим числам. Но есть и небольшие отличия от этого стандарта. К обычным вещественным числам добавляются еще четыре значения:</p>
+<ul>
+<li><em>положительная бесконечность</em>, выражаемая константой <code>POSITIVE_INFINITY</code> и возникающая при переполнении положительного значения, например в результате операции умножения <code>3.0*6e307</code> или при делении на нуль;</li>
+<li><em>отрицательная бесконечность</em> <code>NEGATIVE_INFINITY</code>, возникающая при переполнении отрицательного значения, например в результате операции умножения <code>-3.0*6e307</code> или при делении на нуль отрицательного числа;</li>
+<li><em>не число</em>, записываемое константой <code>NaN</code> (<em>Not a Number</em>) и возникающее, например, при умножении нуля на бесконечность.</li>
+<li>Кроме того, стандарт различает положительный и отрицательный нуль, возникающий при делении на бесконечность соответствующего знака, хотя сравнение <code>0.0 == -0.0</code> дает в результате <code>true</code>.</li>
+</ul>
+<p>Операции с бесконечностями выполняются по обычным математическим правилам. Во всем остальном вещественные типы — это обычные вещественные значения, к которым применимы все арифметические операции и операции сравнения.</p>
+<h3 id="math">Класс Math</h3>
+<p>Для выполнения различных математических операций в <em>Java</em> в пакете <code>java.lang</code> определен класс <code>Math</code>. Рассмотрим его основные методы:</p>
+<ul>
+<li>
+<p><code>abs(double value)</code>: возвращает абсолютное значение для аргумента <code>value</code>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">abs</span><span class="p">(</span><span class="o">-</span><span class="mf">13.5</span><span class="p">);</span> <span class="c1">// 13.5</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>acos(double value)</code>: возвращает арккосинус <code>value</code>. Параметр <code>value</code> должен иметь значение от -1 до 1
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">acos</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// 0.0</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>asin(double value)</code>: возвращает арксинус <code>value</code>. Параметр <code>value</code> должен иметь значение от -1 до 1</p>
+</li>
+<li>
+<p><code>atan(double value)</code>: возвращает арктангенс <code>value</code></p>
+</li>
+<li>
+<p><code>cbrt(double value)</code>: возвращает кубический корень числа <code>value</code>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">cbrt</span><span class="p">(</span><span class="mi">27</span><span class="p">);</span> <span class="c1">// 3</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>ceil(double value)</code>: возвращает наименьшее целое число с плавающей точкой, которое не меньше <code>value</code>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">ceil</span><span class="p">(</span><span class="mf">2.34</span><span class="p">);</span> <span class="c1">// 3</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>cos(double d)</code>: возвращает косинус угла <code>d</code></p>
+</li>
+<li><code>cosh(double d)</code>: возвращает гиперболический косинус угла <code>d</code></li>
+<li><code>exp(double d)</code>: возвращает основание натурального логарифма, возведенное в степень <code>d</code></li>
+<li>
+<p><code>floor(double d)</code>: возвращает наибольшее целое число, которое не больше <code>d</code>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">result</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">floor</span><span class="p">(</span><span class="mf">2.56</span><span class="p">);</span> <span class="c1">// 2</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>floorDiv(int a, int b)</code>: возвращает целочисленный результат деления <code>a</code> на <code>b</code>
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">floorDiv</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// 0</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">floorDiv</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// 3</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">floorDiv</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="c1">// 4</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>log(double a)</code>: возвращает натуральный логарифм числа <code>a</code></p>
+</li>
+<li><code>log1p(double d)</code>: возвращает натуральный логарифм числа <code>(d + 1)</code></li>
+<li><code>log10(double d)</code>: возвращает десятичный логарифм числа <code>d</code></li>
+<li><code>max(double a, double b)</code>: возвращает максимальное число из <code>a</code> и <code>b</code></li>
+<li><code>min(double a, double b)</code>: возвращает минимальное число из <code>a</code> и <code>b</code></li>
+<li><code>pow(double a, double b)</code>: возвращает число <code>a</code>, возведенное в степень <code>b</code></li>
+<li><code>random()</code>: возвращает <em>случайное</em> число от 0.0 до 1.0</li>
+<li>
+<p><code>rint(double value)</code>: возвращает число <code>double</code>, которое представляет ближайшее к числу <code>value</code> целое число
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">rint</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span> <span class="c1">// 2.0</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">rint</span><span class="p">(</span><span class="mf">2.3</span><span class="p">));</span> <span class="c1">// 2.0</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">rint</span><span class="p">(</span><span class="mf">2.5</span><span class="p">));</span> <span class="c1">// 2.0</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">rint</span><span class="p">(</span><span class="mf">2.5001</span><span class="p">));</span> <span class="c1">// 3.0</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">rint</span><span class="p">(</span><span class="mf">2.8</span><span class="p">));</span> <span class="c1">// 3.0</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>round(double d)</code>: возвращает число <code>d</code>, округленное до ближайшего целого числа
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">round</span><span class="p">(</span><span class="mf">2.3</span><span class="p">));</span> <span class="c1">// 2</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">round</span><span class="p">(</span><span class="mf">2.5</span><span class="p">));</span> <span class="c1">// 3</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">round</span><span class="p">(</span><span class="mf">2.5001</span><span class="p">));</span> <span class="c1">// 3</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">round</span><span class="p">(</span><span class="mf">2.8</span><span class="p">));</span> <span class="c1">// 3</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>scalb(double value, int factor)</code>: возвращает произведение числа <code>value</code> на 2 в степени <code>factor</code>
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">scalb</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span> <span class="c1">// 5*2*2*2 = 40</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">scalb</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span> <span class="c1">// 3*2*2*2*2 = 48</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>signum(double value)</code>: возвращает число 1, если число <code>value</code> положительное, и -1, если значение <code>value</code> отрицательное. Если <code>value</code> равно 0, то возвращает 0
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">signum</span><span class="p">(</span><span class="mf">2.3</span><span class="p">));</span> <span class="c1">// 1</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">signum</span><span class="p">(</span><span class="o">-</span><span class="mf">2.3</span><span class="p">));</span> <span class="c1">// -1</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>sin(double value)</code>: возвращает синус угла <code>value</code></p>
+</li>
+<li><code>sinh(double value)</code>: возвращает гиперболический синус угла <code>value</code></li>
+<li>
+<p><code>sqrt(double value)</code>: возвращает квадратный корень числа <code>value</code>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">result1</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span> <span class="c1">// 4</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><code>tan(double value)</code>: возвращает тангенс угла <code>value</code></p>
+</li>
+<li><code>tanh(double value)</code>: возвращает гиперболический тангенс угла <code>value</code></li>
+<li><code>toDegrees(double value)</code> переводит радианы в градусы и <code>toRadians(double value)</code> - градусы в радианы
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">toDegrees</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">));</span> <span class="c1">// 180</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">toRadians</span><span class="p">(</span><span class="mi">90</span><span class="p">));</span> <span class="c1">// 1,57079....</span>
+</code></pre></div></li>
+</ul>
+<p>Также класс <code>Math</code> определяет две константы: <code>Math.E</code> и <code>Math.PI</code>. Например, вычисление площади круга:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Program</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>       
+        <span class="n">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Введите радиус круга: &quot;</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">radius</span> <span class="o">=</span> <span class="n">in</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+        <span class="kt">long</span> <span class="n">area</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">round</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span> <span class="o">*</span> <span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;Площадь круга с радиусом %d равна %d \n&quot;</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">area</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_12">Символы и строки</h2>
+<p>В качестве значения переменная символьного типа получает одиночный символ, заключенный в одинарные кавычки: 
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">ch</span><span class="o">=</span><span class="sc">&#39;e&#39;</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Кроме того, переменной символьного типа также можно присвоить целочисленное значение от 0 до 65535. В этом случае переменная опять же будет хранить символ, а целочисленное значение будет указывать на номер символа в таблице символов Unicode (UTF-16). Например:
+<div class="highlight"><pre><span></span><code><span class="kt">char</span> <span class="n">ch</span><span class="o">=</span><span class="mi">102</span><span class="p">;</span> <span class="c1">// символ &#39;f&#39;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Еще одной формой задания символьных переменных является шестнадцатеричная форма: переменная получает значение в шестнадцатеричной форме, которое следует после символов <code>\u</code>. Например, <code>char ch='\u0066'</code>; опять же будет хранить символ <code>'f'</code>.</p>
+<p>Символьные переменные не стоит путать со строковыми, <code>'a'</code> не идентично <code>"a"</code>. Строковые переменные представляют объект <code>String</code>, который в отличие от <code>char</code> или <code>int</code> не является примитивным типом в Java:
+<div class="highlight"><pre><span></span><code><span class="n">String</span> <span class="n">hello</span> <span class="o">=</span> <span class="s">&quot;Hello...&quot;</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">hello</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Кроме собствено символов, которые представляют буквы, цифры, знаки препинания, прочие символы, есть специальные наборы символов, которые называют управляющими последовательностями. Например, самая популярная последовательность - <code>\n</code>. Она выполняет перенос на следующую строку. Например:
+<div class="highlight"><pre><span></span><code><span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="s">&quot;Hello \nworld&quot;</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Результат выполнения данного кода:
+<div class="highlight"><pre><span></span><code>Hello
+world
+</code></pre></div></p>
+<p>Начиная с версии <strong>Java 15</strong> поддерживаются текстовые блоки (<em>text blocks</em>) - многострочный текст, облеченный в тройные кавычки. 
+До данной версии многострочный текст приходилось форматировать с помощью <code>\n</code>:
+<div class="highlight"><pre><span></span><code><span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="s">&quot;Вот мысль, которой весь я предан,\n&quot;</span><span class="o">+</span>
+                <span class="s">&quot;Итог всего, что ум скопил.\n&quot;</span><span class="o">+</span>
+                <span class="s">&quot;Лишь тот, кем бой за жизнь изведан,\n&quot;</span><span class="o">+</span>
+                <span class="s">&quot;Жизнь и свободу заслужил.&quot;</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+</code></pre></div>
+С помощью оператора конкатенации (этот оператор работает со строками) <code>+</code> мы можем присоединить к одному тексту другой, причем продолжение текста может располагаться на следующей строке. Чтобы при выводе текста происходил перенос на следующую строку, применяется последовательность <code>\n</code>.</p>
+<p>Текстовые блоки, которые появились в <strong>Java 15</strong>, позволяют упростить написание многострочного текста:</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">            Вот мысль, которой весь я предан,</span>
+<span class="s">            Итог всего, что ум скопил.</span>
+<span class="s">            Лишь тот, кем бой за жизнь изведан,</span>
+<span class="s">            Жизнь и свободу заслужил.</span>
+<span class="s">            &quot;&quot;&quot;</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+</code></pre></div>
+Весь текстовый блок оборачивается в тройные кавычки, при этом не надо использовать соединение строк или последовательность <code>\n</code> для их переноса. Результат выполнения программы будет тем же.</p>
+<h2 id="_13">Приведение типов</h2>
+<p>Каждый базовый тип данных занимает определенное количество байт памяти. Это накладывает ограничение на операции, в которые вовлечены различные типы данных. Рассмотрим следующий пример:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// Упадёт</span>
+</code></pre></div></p>
+<p>В данном коде мы столкнемся с ошибкой. Хотя и тип <code>byte</code>, и тип <code>int</code> представляют целые числа. Более того, значение переменной a, которое присваивается переменной типа <code>byte</code>, вполне укладывается в диапазон значений для типа <code>byte</code> (от -128 до 127). Тем не менее мы сталкиваемся с ошибкой на этапе компиляции. Поскольку в данном случае мы пытаемся присвоить некоторые данные, которые занимают 4 байта, переменной, которая занимает всего один 1 байт.</p>
+<p>Тем не менее в программе может потребоваться, чтобы подобное преобразование было выполнено. В этом случае необходимо использовать операцию преобразования типов (операция <code>()</code>):
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span><span class="n">a</span><span class="p">;</span>  <span class="c1">// преобразование типов: от типа int к типу byte</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span> <span class="c1">// 4</span>
+</code></pre></div></p>
+<p>Операция преобразования типов предполагает указание в скобках того типа, к которому надо преобразовать значение. Например, в случае операции <code>(byte)a</code>, идет преобразование данных типа <code>int</code> в тип <code>byte</code>. В итоге мы получим значение типа <code>byte</code>.</p>
+<p>Когда в одной операции вовлечены данные разных типов, не всегда необходимо использовать операцию преобразования типов. Некоторые виды преобразований выполняются неявно, автоматически.</p>
+<p><img alt="Автоматические преобразования типов" src="../../assets/images/%D0%9F%D0%91%D0%9F%D0%9E%D0%98/shared/type_transform_auto.png" /></p>
+<p><em>Рисунок 4. Автоматические преобразования типов</em></p>
+<p>Стрелками на рисунке показано, какие преобразования типов могут выполняться автоматически. Пунктирными стрелками показаны автоматические преобразования с потерей точности.</p>
+<p>Автоматически без каких-либо проблем производятся расширяющие преобразования (<em>widening</em>) - они расширяют представление объекта в памяти. Например:
+<div class="highlight"><pre><span></span><code><span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>  <span class="c1">// преобразование от byte к int</span>
+</code></pre></div></p>
+<p>В данном случае значение типа <code>byte</code>, которое занимает в памяти 1 байт, расширяется до типа <code>int</code>, которое занимает 4 байта.</p>
+<p>Расширяющие автоматические преобразования представлены следующими цепочками:</p>
+<p><strong><code>byte</code></strong> -&gt; <strong><code>short</code></strong> -&gt; <strong><code>int</code></strong> -&gt; <strong><code>long</code></strong></p>
+<p><strong><code>int</code></strong> -&gt; <strong><code>double</code></strong></p>
+<p><strong><code>short</code></strong> -&gt; <strong><code>float</code></strong> -&gt; <strong><code>double</code></strong></p>
+<p><strong><code>char</code></strong> -&gt; <strong><code>int</code></strong></p>
+<p>Некоторые преобразования могут производиться автоматически между типами данных одинаковой разрядности или даже от типа данных с большей разрядностью к типа с меньшей разрядностью. Это следующие цепочки преобразований: <strong><code>int</code></strong> -&gt; <strong><code>float</code></strong>, <strong><code>long</code></strong> -&gt; <strong><code>float</code></strong> и <strong><code>long</code></strong> -&gt; <strong><code>double</code></strong>. Они производятся без ошибок, но при преобразовании мы можем столкнуться с потерей информации.</p>
+<p>Например:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2147483647</span><span class="p">;</span>
+<span class="kt">float</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>            <span class="c1">// от типа int к типу float</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>  <span class="c1">// 2.14748365E9</span>
+</code></pre></div></p>
+<p>Во всех остальных преобразованиях примитивных типов явным образом применяется операция преобразования типов. Обычно это сужающие преобразования (<em>narrowing</em>) от типа с большей разрядностью к типу с меньшей разрядностью:
+<div class="highlight"><pre><span></span><code><span class="kt">long</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">a</span><span class="p">;</span>
+</code></pre></div></p>
+<p>При применении явных преобразований мы можем столкнуться с потерей данных. Например, в следующем коде у нас не возникнет никаких проблем:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="n">a</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>      <span class="c1">// 5</span>
+</code></pre></div></p>
+<p>Число 5 вполне укладывается в диапазон значений типа <code>byte</code>, поэтому после преобразования переменная <code>b</code> будет равна 5. Но что будет в следующем случае:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">258</span><span class="p">;</span>
+<span class="kt">byte</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="n">a</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>      <span class="c1">// 2</span>
+</code></pre></div></p>
+<p>Результатом будет число 2. В данном случае число 258 вне диапазона для типа <code>byte</code> (от -128 до 127), поэтому произойдет усечение значения. Почему результатом будет именно число 2?</p>
+<p>Число <code>a</code>, которое равно 258, в двоичном системе будет равно <strong>00000000 00000000 00000001 00000010</strong>. Значения типа <code>byte</code> занимают в памяти только 8 бит. Поэтому двоичное представление числа <code>int</code> усекается до 8 правых разрядов, то есть <strong>00000010</strong>, что в десятичной системе дает число 2.</p>
+<p>При преобразовании значений с плавающей точкой к целочисленным значениям, происходит усечение дробной части:
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">56.9898</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">a</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Здесь значение числа <code>b</code> будет равно 56, несмотря на то, что число 57 было бы ближе к 56.9898. Чтобы избежать подобных казусов, надо применять функцию округления, которая есть в математической библиотеке Java:
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">56.9898</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">Math</span><span class="p">.</span><span class="na">round</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</code></pre></div></p>
+<p>Нередки ситуации, когда приходится применять различные операции, например, сложение и произведение, над значениями разных типов. Здесь также действуют некоторые правила:</p>
+<ul>
+<li>если один из операндов операции относится к типу <code>double</code>, то и второй операнд преобразуется к типу <code>double</code></li>
+<li>если предыдущее условие не соблюдено, а один из операндов операции относится к типу <code>float</code>, то и второй операнд преобразуется к типу <code>float</code></li>
+<li>если предыдущие условия не соблюдены, один из операндов операции относится к типу <code>long</code>, то и второй операнд преобразуется к типу <code>long</code></li>
+<li>иначе все операнды операции преобразуются к типу <code>int</code></li>
+</ul>
+<p>Примеры преобразований:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">4.6</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
+</code></pre></div>
+Так как в операции участвует значение типа <code>double</code>, то и другое значение приводится к типу <code>double</code> и сумма двух значений <code>a+b</code> будет представлять тип <code>double</code>.</p>
+<p>Другой пример:
+<div class="highlight"><pre><span></span><code><span class="kt">byte</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="kt">short</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kt">byte</span> <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">);</span>
+</code></pre></div>
+Две переменных типа <code>byte</code> и <code>short</code> (не <code>double</code>, <code>float</code> или <code>long</code>), поэтому при сложении они преобразуются к типу <code>int</code>, и их сумма <code>a+b</code> представляет значение типа <code>int</code>. Поэтому если затем мы присваиваем эту сумму переменной типа <code>byte</code>, то нам опять надо сделать преобразование типов к <code>byte</code>.</p>
+<p>Если в операциях участвуют данные типа <code>char</code>, то они преобразуются в <code>int</code>:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="sc">&#39;a&#39;</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>  <span class="c1">// 102</span>
+</code></pre></div></p>
+<h2 id="_14">Операторы</h2>
+<p><strong>Выражение</strong> – комбинация операндов и операций, задающая порядок вычисления некоторого значения (на основе приоритетов операций).</p>
+<p><strong>Операнд</strong> в простейшем случае является константой (литералом) или идентификатором (переменной). В общем случае каждый операнд выражения также представляет собой выражение, имеющее некоторое значение (в выражениях можно использовать скобки для изменения порядка действий).</p>
+<p><strong>Операция</strong> определяет действие, выполняемое над операндами. Возвращает некоторое значение.</p>
+<p><strong>Оператор</strong> − это некоторая конструкция, присущая данному конкретному языку, изменяющая состояние памяти компьютера, но ничего не возвращающая.</p>
+<h3 id="_15">Оператор присваивания</h3>
+<p>Присвоение переменной значения константы, другой переменной или выражения (переменных и/или констант, разделенных знаками операций), называется операцией присваивания и обозначается знаком "=", например:
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span> <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</code></pre></div></p>
+<p>В <em>Java</em> допустимо многократное использование операции присваивания в одном выражении, например:
+<div class="highlight"><pre><span></span><code><span class="n">x1</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">x3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Эта операция выполняется <strong>справа налево</strong>, т.е. сначала переменной <code>x3</code> присваивается значение 0, затем переменной <code>x2</code> присваивается значение переменной <code>x3</code> (0), и, наконец, переменной <code>x1</code> присваивается значение переменной <code>x2</code> (0).</p>
+<p>Знаки операций, аргументами которых являются числа, разделяются на две категории: унарные (unary) знаки операций с одним аргументом и бинарные (binary) с двумя аргументами.</p>
+<h3 id="_16">Арифметические операторы</h3>
+<p>Большинство операторов в <em>Java</em> аналогичны тем, которые применяются в других <em>С</em>-подобных языках. Есть <strong>унарные</strong> операции (выполняются над одним операндом), <strong>бинарные</strong> - над двумя операндами, а также <strong>тернарные</strong> - выполняются над тремя операндами. </p>
+<p>В арифметических операциях участвуют числа. В <em>Java</em> есть <em>бинарные</em> арифметические операции (производятся над двумя операндами) и <em>унарные</em> (выполняются над одним операндом). К <em>бинарным</em> операциям относят следующие:</p>
+<ul>
+<li><code>+</code>: операция сложения двух чисел:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>  <span class="c1">// 17</span>
+<span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>  <span class="c1">// 11</span>
+</code></pre></div></li>
+<li><code>-</code>: операция вычитания двух чисел:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>  <span class="c1">// 3</span>
+<span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">-</span> <span class="n">a</span><span class="p">;</span>  <span class="c1">// -6</span>
+</code></pre></div></li>
+<li><code>*</code>: операция умножения двух чисел
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span>  <span class="c1">// 70</span>
+<span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="mi">5</span><span class="p">;</span>  <span class="c1">// 35</span>
+</code></pre></div></li>
+<li><code>/</code>: операция деления двух чисел:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">;</span>  <span class="c1">// 4</span>
+<span class="kt">double</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">22.5</span> <span class="o">/</span> <span class="mf">4.5</span><span class="p">;</span>  <span class="c1">// 5.0</span>
+</code></pre></div></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Замечание</p>
+<p>При делении стоит учитывать, что если в операции участвуют два целых числа, то результат деления будет округляться до целого числа, даже если результат присваивается переменной <code>float</code> или <code>double</code>:</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>     <span class="c1">// 2</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Замечание</p>
+<p>Чтобы результат представлял число с плавающей точкой, один из операндов также должен представлять число с плавающей точкой:</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">k</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>     <span class="c1">// 2.5</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li><code>%</code>: получение остатка от деления двух чисел:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">;</span>  <span class="c1">// 3</span>
+<span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">22</span> <span class="o">%</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 2 (22 - 4*5 = 2)</span>
+</code></pre></div></li>
+</ul>
+<p>Также есть две унарные арифметические операции, которые производятся над одним числом: <code>++</code> (инкремент) и <code>--</code> (декремент). Каждая из операций имеет две разновидности: префиксная и постфиксная.</p>
+<ul>
+<li><code>++</code> (префиксный инкремент): Предполагает увеличение переменной на единицу, например, <code>z=++y</code> (вначале значение переменной <code>y</code> увеличивается на 1, а затем ее значение присваивается переменной <code>z</code>)
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="o">++</span><span class="n">a</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>  <span class="c1">// 9</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>  <span class="c1">// 9</span>
+</code></pre></div></li>
+<li><code>++</code> (постфиксный инкремент): Также представляет увеличение переменной на единицу, например, <code>z=y++</code> (вначале значение переменной <code>y</code> присваивается переменной <code>z</code>, а потом значение переменной <code>y</code> увеличивается на <code>1</code>)
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">++</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>  <span class="c1">// 9</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>  <span class="c1">// 8</span>
+</code></pre></div></li>
+<li><code>--</code> (префиксный декремент): уменьшение переменной на единицу, например, <code>z=--y</code> (вначале значение переменной <code>y</code> уменьшается на 1, а потом ее значение присваивается переменной <code>z</code>)
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="o">--</span><span class="n">a</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>  <span class="c1">// 7</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>  <span class="c1">// 7</span>
+</code></pre></div></li>
+<li><code>--</code> (постфиксный декремент): <code>z=y--</code> (сначала значение переменной <code>y</code> присваивается переменной <code>z</code>, а затем значение переменной <code>y</code> уменьшается на 1)
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">--</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>  <span class="c1">// 7</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>  <span class="c1">// 8</span>
+</code></pre></div></li>
+</ul>
+<h3 id="_17">Операторы сравнения</h3>
+<p>В операциях сравнения сравниваются два операнда, и возвращается значение типа <code>boolean</code> - <code>true</code>, если выражение верно, и <code>false</code>, если выражение неверно.</p>
+<ul>
+<li><code>==</code>: сравнивает два операнда на равенство и возвращает <code>true</code> (если операнды равны) и <code>false</code> (если операнды не равны)
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kt">boolean</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">;</span>         <span class="c1">// false</span>
+<span class="kt">boolean</span> <span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">10</span><span class="p">;</span>       <span class="c1">// true</span>
+</code></pre></div></li>
+<li><code>!=</code>: сравнивает два операнда и возвращает <code>true</code>, если операнды <strong>НЕ равны</strong>, и <code>false</code>, если операнды равны
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kt">boolean</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">;</span>         <span class="c1">// true</span>
+<span class="kt">boolean</span> <span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">!=</span> <span class="mi">10</span><span class="p">;</span>       <span class="c1">// false</span>
+</code></pre></div></li>
+<li><code>&lt;</code> (меньше чем): Возвращает <code>true</code>, если первый операнд меньше второго, иначе возвращает <code>false</code>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kt">boolean</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">;</span>   <span class="c1">// false</span>
+</code></pre></div></li>
+<li><code>&gt;</code> (больше чем): Возвращает <code>true</code>, если первый операнд больше второго, иначе возвращает <code>false</code>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kt">boolean</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">;</span>   <span class="c1">// true</span>
+</code></pre></div></li>
+<li><code>&gt;=</code> (больше или равно): Возвращает <code>true</code>, если первый операнд больше второго или равен второму, иначе возвращает <code>false</code>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">;</span>    <span class="c1">// true</span>
+<span class="kt">boolean</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">;</span>     <span class="c1">// true</span>
+<span class="kt">boolean</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">;</span>    <span class="c1">// false</span>
+</code></pre></div></li>
+<li><code>&lt;=</code> (меньше или равно): Возвращает <code>true</code>, если первый операнд меньше второго или равен второму, иначе возвращает <code>false</code>
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span>    <span class="c1">// true</span>
+<span class="kt">boolean</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">;</span>     <span class="c1">// false</span>
+<span class="kt">boolean</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">;</span>    <span class="c1">// true</span>
+</code></pre></div></li>
+</ul>
+<h3 id="_18">Логические операторы</h3>
+<p>Также в <em>Java</em> есть логические операторы, которые также представляют условие и возвращают <code>true</code> или <code>false</code> и обычно объединяют несколько операций сравнения. К логическим операторам относят следующие:</p>
+<ul>
+<li><code>|</code> (оператор ИЛИ): </li>
+</ul>
+<p><code>c=a|b;</code> (<code>c</code> равно <code>true</code>, если либо <code>a</code>, либо <code>b</code> (либо и <code>a</code>, и <code>b</code>) равны <code>true</code>, иначе <code>c</code> будет равно <code>false</code>)</p>
+<ul>
+<li><code>&amp;</code> (оператор И): </li>
+</ul>
+<p><code>c=a&amp;b;</code> (<code>c</code> равно <code>true</code>, если и <code>a</code>, и <code>b</code> равны <code>true</code>, иначе <code>c</code> будет равно <code>false</code>)</p>
+<ul>
+<li><code>!</code> (опиратор НЕ): </li>
+</ul>
+<p><code>c=!b;</code> (<code>c</code> равно <code>true</code>, если <code>b</code> равно <code>false</code>, иначе <code>c</code> будет равно <code>false</code>)</p>
+<ul>
+<li><code>^</code> (оператор XOR - исключающее ИЛИ): </li>
+</ul>
+<p><code>c=a^b;</code> (<code>c</code> равно <code>true</code>, если либо <code>a</code>, либо <code>b</code> (но не одновременно) равны <code>true</code>, иначе c будет равно <code>false</code>)</p>
+<ul>
+<li><code>||</code> (оператор ИЛИ): </li>
+</ul>
+<p><code>c=a||b;</code> (<code>c</code> равно <code>true</code>, если либо <code>a</code>, либо <code>b</code> (либо и <code>a</code>, и <code>b</code>) равны <code>true</code>, иначе c будет равно <code>false</code>)</p>
+<ul>
+<li><code>&amp;&amp;</code> (оператор И): </li>
+</ul>
+<p><code>c=a&amp;&amp;b;</code> (<code>c</code> равно <code>true</code>, если и <code>a</code>, и <code>b</code> равны <code>true</code>, иначе <code>c</code> будет равно <code>false</code>)</p>
+<p>Две пары операций <code>|</code> и <code>||</code> (а также <code>&amp;</code> и <code>&amp;&amp;</code>) выполняют похожие действия, однако же они не равнозначны.</p>
+<p>Выражение <code>c=a|b;</code> будет вычислять сначала оба значения - <code>a</code> и <code>b</code> и на их основе выводить результат.</p>
+<p>В выражении же <code>c=a||b;</code> вначале будет вычисляться значение <code>a</code>, и если оно равно <code>true</code>, то вычисление значения <code>b</code> уже смысла не имеет, так как у нас в любом случае уже c будет равно <code>true</code>. Значение <code>b</code> будет вычисляться только в том случае, если <code>a</code> равно <code>false</code></p>
+<p>То же самое касается пары операций <code>&amp;/&amp;&amp;</code>. В выражении <code>c=a&amp;b;</code> будут вычисляться оба значения - <code>a</code> и <code>b</code>.</p>
+<p>В выражении же <code>c=a&amp;&amp;b;</code> сначала будет вычисляться значение a, и если оно равно <code>false</code>, то вычисление значения <code>b</code> уже не имеет смысла, так как значение <code>c</code> в любом случае равно <code>false</code>. Значение <code>b</code> будет вычисляться только в том случае, если <code>a</code> равно <code>true</code></p>
+<p>Таким образом, операторы <code>||</code> и <code>&amp;&amp;</code> более удобны в вычислениях, позволяя сократить время на вычисление значения выражения и тем самым повышая производительность. А операции <code>|</code> и <code>&amp;</code> больше подходят для выполнения поразрядных операций над числами.</p>
+<p>Операторы <code>||</code> и <code>&amp;&amp;</code> называются также <strong>сокращенным оператором И</strong> и <strong>сокращенным оператором ИЛИ</strong>.</p>
+<p>Примеры:
+<div class="highlight"><pre><span></span><code><span class="kt">boolean</span> <span class="n">a1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">);</span> 
+<span class="c1">// 5 &gt; 6 - false, 4 &lt; 6 - true, поэтому возвращается true</span>
+
+<span class="kt">boolean</span> <span class="n">a2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="mi">4</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">);</span> 
+<span class="c1">// 5 &gt; 6 - false, 4 &gt; 6 - false, поэтому возвращается false</span>
+
+<span class="kt">boolean</span> <span class="n">a3</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">);</span> 
+<span class="c1">// 5 &gt; 6 - false, поэтому возвращается false (4 &lt; 6 - true, но не вычисляется)</span>
+
+<span class="kt">boolean</span> <span class="n">a4</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="mi">4</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">);</span> 
+<span class="c1">// 50 &gt; 6 - true, 4/2 &lt; 3 - true, поэтому возвращается true</span>
+
+<span class="kt">boolean</span> <span class="n">a5</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="mi">4</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">);</span> 
+<span class="c1">// 5 &gt; 6 - true, поэтому возвращается true (4 &lt; 6 - false)</span>
+
+<span class="kt">boolean</span> <span class="n">a6</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="mi">4</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">);</span> 
+<span class="c1">// 50 &gt; 6 - true, 4/2 &lt; 3 - true, поэтому возвращается false</span>
+</code></pre></div></p>
+<h3 id="_19">Побитовые операции</h3>
+<ul>
+<li><code>~</code>: Побитовый унарный оператор NOT;</li>
+<li><code>&amp;</code>: Побитовый AND;</li>
+<li><code>&amp;=</code>: Побитовый AND с присваиванием;</li>
+<li><code>|</code>: Побитовый OR;</li>
+<li><code>|=</code>: Побитовый OR с присваиванием;</li>
+<li><code>^</code>: Побитовый исключающее XOR;</li>
+<li><code>^=</code>: Побитовый исключающее XOR с присваиванием;</li>
+<li><code>&gt;&gt;</code>: Сдвиг вправо (деление на 2 в степени сдвига);</li>
+<li><code>&gt;&gt;=</code>: Сдвиг вправо с присваиванием;</li>
+<li><code>&gt;&gt;&gt;</code>: Сдвиг вправо без учёта знака;</li>
+<li><code>&gt;&gt;&gt;=</code>: Сдвиг вправо без учёта знака с присваиванием;</li>
+<li><code>&lt;&lt;</code>: Сдвиг влево (умножение на 2 в степени сдвига);</li>
+<li><code>&lt;&lt;=</code>: Сдвиг влево с присваиванием.</li>
+</ul>
+<h3 id="_20">Тернарный оператор</h3>
+<p>Тернарный условный оператор <code>?:</code> - оператор, которым можно заменить некоторые конструкции операторов <code>if-then-else</code>.</p>
+<p>Выражение записывается в следующей форме:</p>
+<blockquote>
+<p>условие ? выражение1 : выражение2</p>
+</blockquote>
+<p>Если <code>условие</code> выполняется, то вычисляется <code>выражение1</code> и его результат становится результатом выполнения всего оператора. Если же <code>условие</code> равно <code>false</code>, то вычисляется <code>выражение2</code> и его значение становится результатом работы оператора. Оба операнда <code>выражение1</code> и <code>выражение2</code> должны возвращать значение одинакового (или совместимого) типа.</p>
+<h3 id="_21">Приоритет операций</h3>
+<p>Приоритет операций в <em>Java</em> определяется следующей таблицей:</p>
+<table>
+<thead>
+<tr>
+<th>Оператор</th>
+<th>Описание</th>
+<th>Ассоциативность</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>++</code>,<code>--</code></td>
+<td>постинкремент, постдекремент</td>
+<td>справа налево</td>
+</tr>
+<tr>
+<td><code>++</code>, <code>--</code>, <code>+</code>, <code>-</code>, <code>~</code>, <code>!</code></td>
+<td>преинкремент, предекремент, унарный плюс, унарный минус, поразрядное дополнение, булево «не»</td>
+<td>справа налево</td>
+</tr>
+<tr>
+<td><code>*</code>, <code>/</code>, <code>%</code></td>
+<td>умножение, деление, остаток от деления</td>
+<td>слева направо</td>
+</tr>
+<tr>
+<td><code>+</code>,<code>—</code></td>
+<td>сложение, вычитание</td>
+<td>слева направо</td>
+</tr>
+<tr>
+<td><code>&lt;&lt;</code>, <code>&gt;&gt;</code>, <code>&gt;&gt;&gt;</code></td>
+<td>сдвиг влево, сдвиг вправо, беззнаковый сдвиг вправо</td>
+<td>слева направо</td>
+</tr>
+<tr>
+<td><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>,<code>&gt;=</code>, <code>instanceof</code></td>
+<td>меньше, больше, меньше или равно, больше или равно, сравнить тип</td>
+<td>слева направо</td>
+</tr>
+<tr>
+<td><code>==</code>, <code>!=</code></td>
+<td>равно, не равно</td>
+<td>слева направо</td>
+</tr>
+<tr>
+<td><code>&amp;</code></td>
+<td>битовое «и»</td>
+<td>слева направо</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>исключающее «или»</td>
+<td>слева направо</td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>битовое «или»</td>
+<td>слева направо</td>
+</tr>
+<tr>
+<td><code>&amp;&amp;</code></td>
+<td>логическое «и»</td>
+<td>слева направо</td>
+</tr>
+<tr>
+<td><code>||</code></td>
+<td>логическое «или»</td>
+<td>слева направо</td>
+</tr>
+<tr>
+<td><code>?:</code></td>
+<td>тернарный оператор</td>
+<td>слева направо</td>
+</tr>
+<tr>
+<td><code>=</code>, <code>+=</code>, <code>-=</code>,<code>*=</code>, <code>/=</code>, <code>%=</code>, <code>&amp;=</code>, <code>^=</code>,  <code>|=</code>, <code>&lt;&lt;=</code>, <code>&gt;&gt;=</code>,<code>&gt;&gt;&gt;=</code></td>
+<td>операторы присваивания</td>
+<td>справа налево</td>
+</tr>
+</tbody>
+</table>
+<p>Изменить приоритет операторов можно при помощи скобок:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span> <span class="c1">// a = 6</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span> <span class="c1">// a = 8</span>
+</code></pre></div></p>
+<h2 id="-java">Простой ввод-вывод в <em>Java</em></h2>
+<p>Наиболее простой способ взаимодействия с пользователем представляет <strong>консоль</strong>: мы можем выводить на консоль некоторую информацию или, наоборот, считывать с консоли некоторые данные. Для взаимодействия с консолью в <em>Java</em> применяется класс <code>System</code>, а его функциональность собственно обеспечивает консольный ввод и вывод.</p>
+<h3 id="_22">Вывод на консоль</h3>
+<p>Для создания потока вывода в класс <code>System</code> определен объект <code>out</code>. В этом объекте определен метод <code>println</code>, который позволяет вывести на консоль некоторое значение с последующим переводом курсора консоли на следующую строку. Например:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Program</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>        
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Initiating exterminatus in 3..2..1..go!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>В метод <code>println</code> передается любое значение, как правило, строка, которое надо вывести на консоль.</p>
+<p>При необходимости можно и не переводить курсор на следующую строку. В этом случае можно использовать метод <code>System.out.print()</code>, который аналогичен <code>println</code> за тем исключением, что не осуществляет перевода на следующую строку.
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Program</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;world...&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Консольный вывод данной программы:
+<div class="highlight"><pre><span></span><code>Hello world...
+</code></pre></div></p>
+<p>C помощью метода <code>System.out.print</code> также можно осуществить перевод каретки на следующую строку. Для этого надо использовать <em>escape-последовательность</em> <code>\n</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Hello world \n&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Нередко необходимо подставлять в строку какие-нибудь данные. Например, есть два числа, и нужно вывести их значения на экран. В этом случае можно, например, написать так:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Program</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>   
+        <span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">y</span><span class="o">=</span><span class="mi">6</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;x=&quot;</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="s">&quot;; y=&quot;</span> <span class="o">+</span> <span class="n">y</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>Консольный вывод программы:
+<div class="highlight"><pre><span></span><code>x=5; y=6
+</code></pre></div></p>
+<p>В <em>Java</em> есть также функция для форматированного вывода, унаследованная от языка <em>С</em>: <code>System.out.printf()</code>. С ее помощью мы можем переписать предыдущий пример следующим образом:
+<div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">y</span><span class="o">=</span><span class="mi">6</span><span class="p">;</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;x=%d; y=%d \n&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</code></pre></div></p>
+<p>В данном случае символы <code>%d</code> обозначают спецификатор, вместо которого подставляет один из аргументов. Спецификаторов и соответствующих им аргументов может быть множество. В данном случае у нас только два аргумента, поэтому вместо первого <code>%d</code> подставляет значение переменной <code>x</code>, а вместо второго - значение переменной <code>y</code>. Сама буква <code>d</code> означает, что данный спецификатор будет использоваться для вывода целочисленных значений.</p>
+<p>Кроме спецификатора <code>%d</code> мы можем использовать еще ряд спецификаторов для других типов данных:</p>
+<ul>
+<li><code>%x</code>: для вывода шестнадцатеричных чисел</li>
+<li><code>%f</code>: для вывода чисел с плавающей точкой</li>
+<li><code>%e</code>: для вывода чисел в экспоненциальной форме, например, <code>1.3e+01</code></li>
+<li><code>%c</code>: для вывода одиночного символа</li>
+<li><code>%s</code>: для вывода строковых значений</li>
+</ul>
+<p>Например:
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Program</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Tom&quot;</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">1.7f</span><span class="p">;</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;Name: %s  Age: %d  Height: %.2f \n&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+При выводе чисел с плавающей точкой мы можем указать количество знаков после запятой, для этого используем спецификатор на <code>%.2f</code>, где <code>.2</code> указывает, что после запятой будет два знака. В итоге мы получим следующий вывод:
+<div class="highlight"><pre><span></span><code>Name: Tom  Age: 30  Height: 1,70
+</code></pre></div></p>
+<h3 id="_23">⭐ Ввод с консоли</h3>
+<p>Для получения ввода с консоли в классе <code>System</code> определен объект <code>in</code>. Этот объект является стандартным потоком ввода. Однако непосредственно через объект <code>System.in</code> не очень удобно работать, поэтому, как правило, используют класс <code>Scanner</code>, который, в свою очередь может использовать поток ввода <code>System.in</code>. Например, программа, которая осуществляет ввод чисел:
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Program</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Input a number: &quot;</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">in</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;Your number: %d \n&quot;</span><span class="p">,</span> <span class="n">num</span><span class="p">);</span>
+        <span class="n">in</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+Так как класс <code>Scanner</code> находится в пакете <code>java.util</code>, то мы вначале его импортируем с помощью инструкции 
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span>
+</code></pre></div></p>
+<p>Для создания самого объекта <code>Scanner</code> в его конструктор передается объект <code>System.in</code>. После этого мы можем получать вводимые значения. Например, в данном случае вначале выводим приглашение к вводу и затем получаем вводимое число в переменную <code>num</code>.</p>
+<p>Чтобы получить введенное число, используется метод <code>in.nextInt();</code>, который возвращает введенное с клавиатуры целочисленное значение.</p>
+<p>Пример работы программы:
+<div class="highlight"><pre><span></span><code>Input a number: 5
+Your number: 5
+</code></pre></div></p>
+<p>Класс <code>Scanner</code> имеет еще ряд методов, которые позволяют получить введенные пользователем значения:</p>
+<ul>
+<li><code>next()</code>: считывает введенную строку до первого пробела</li>
+<li><code>nextLine()</code>: считывает всю введенную строку</li>
+<li><code>nextInt()</code>: считывает введенное число <code>int</code></li>
+<li><code>nextDouble()</code>: считывает введенное число <code>double</code></li>
+<li><code>nextBoolean()</code>: считывает значение <code>boolean</code></li>
+<li><code>nextByte()</code>: считывает введенное число <code>byte</code></li>
+<li><code>nextFloat()</code>: считывает введенное число <code>float</code></li>
+<li><code>nextShort()</code>: считывает введенное число <code>short</code></li>
+</ul>
+<p>То есть для ввода значений каждого примитивного типа в классе <code>Scanner</code> определен свой метод.</p>
+<p>Например, создадим программу для ввода информации о человеке:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Program</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>    
+        <span class="n">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Input name: &quot;</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">in</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Input age: &quot;</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">in</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Input height: &quot;</span><span class="p">);</span>
+        <span class="kt">float</span> <span class="n">height</span> <span class="o">=</span> <span class="n">in</span><span class="p">.</span><span class="na">nextFloat</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;Name: %s  Age: %d  Height: %.2f \n&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">height</span><span class="p">);</span>
+        <span class="n">in</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Здесь последовательно вводятся данные типов <code>String</code>, <code>int</code>, <code>float</code> и потом все введенные данные вместе выводятся на консоль. Пример работы программы:
+<div class="highlight"><pre><span></span><code>Input name: Tom
+Input age: 34
+Input height: 1,7
+Name: Tom  Age: 34  Height: 1,70
+</code></pre></div></p>
+<p>Обратите внимание, что для ввода значения типа <code>float</code> (то же самое относится к типу <code>double</code>) применяется число <strong>1,7</strong>, где разделителем является запятая, а не <strong>1.7</strong>, где разделителем является точка. В данном случае все зависит от текущей языковой локализации системы. Для русскоязычной локализации следует соответственно вводить необходимо числа, где разделителем является запятая. То же самое касается многих других локализаций, например, немецкой, французской и т.д., где применяется запятая. Для английской локализации следует использовать точку.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            К началу
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул">
+      
+        
+        <a href="../0-prerequisites/" class="md-footer__link md-footer__link--prev" aria-label="Назад: 0. Java. JVM, JRE, JDK. Среды разработки. Системы сборки." rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              0. Java. JVM, JRE, JDK. Среды разработки. Системы сборки.
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../2-conditionals-loops-functions/" class="md-footer__link md-footer__link--next" aria-label="Вперед: 2. Условные операторы. Операторы циклов. Функции и рекурсия. Массивы." rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              2. Условные операторы. Операторы циклов. Функции и рекурсия. Массивы.
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Сделано с &#10084; Денисом Оболенским
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/readonlyden/Programming-101" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://vk.com/sevsu_itiks" target="_blank" rel="noopener" title="vk.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M545 117.7c3.7-12.5 0-21.7-17.8-21.7h-58.9c-15 0-21.9 7.9-25.6 16.7 0 0-30 73.1-72.4 120.5-13.7 13.7-20 18.1-27.5 18.1-3.7 0-9.4-4.4-9.4-16.9V117.7c0-15-4.2-21.7-16.6-21.7h-92.6c-9.4 0-15 7-15 13.5 0 14.2 21.2 17.5 23.4 57.5v86.8c0 19-3.4 22.5-10.9 22.5-20 0-68.6-73.4-97.4-157.4-5.8-16.3-11.5-22.9-26.6-22.9H38.8c-16.8 0-20.2 7.9-20.2 16.7 0 15.6 20 93.1 93.1 195.5C160.4 378.1 229 416 291.4 416c37.5 0 42.1-8.4 42.1-22.9 0-66.8-3.4-73.1 15.4-73.1 8.7 0 23.7 4.4 58.7 38.1 40 40 46.6 57.9 69 57.9h58.9c16.8 0 25.3-8.4 20.4-25-11.2-34.9-86.9-106.7-90.3-111.5-8.7-11.2-6.2-16.2 0-26.2.1-.1 72-101.3 79.4-135.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.sevsu.ru/" target="_blank" rel="noopener" title="www.sevsu.ru" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top"], "translations": {"clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "search.config.lang": "ru", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\u041f\u043e\u0438\u0441\u043a", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version.title": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.649a939e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1423 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://readonlyden.github.io/Programming-101/%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/5-gc/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.2">
+    
+    
+      
+        <title>5. ⭐ Устройство JVM. Сборщик мусора (GC) - СевГУ - П:БПОИ / П:ЯВУ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f7951f6f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-44C4RXEXJJ"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-44C4RXEXJJ",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-44C4RXEXJJ"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jvm" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="СевГУ - П:БПОИ / П:ЯВУ" class="md-header__button md-logo" aria-label="СевГУ - П:БПОИ / П:ЯВУ" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            СевГУ - П:БПОИ / П:ЯВУ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. ⭐ Устройство JVM. Сборщик мусора (GC)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent=""  aria-label="Включить темную тему"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Включить темную тему" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Включить светлую тему"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Включить светлую тему" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Очистить" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Главная
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Git/in-real-world/" class="md-tabs__link">
+        Git
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../0-prerequisites/" class="md-tabs__link md-tabs__link--active">
+        Основы Java
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/" class="md-tabs__link">
+        ПБПОИ
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%D0%9F%D0%AF%D0%92%D0%A3/faq/" class="md-tabs__link">
+        ПЯВУ
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="СевГУ - П:БПОИ / П:ЯВУ" class="md-nav__button md-logo" aria-label="СевГУ - П:БПОИ / П:ЯВУ" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    СевГУ - П:БПОИ / П:ЯВУ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Главная
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Git/in-real-world/" class="md-nav__link">
+        Git в реальной разработке
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Основы Java
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Основы Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Основы Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0-prerequisites/" class="md-nav__link">
+        0. Java. JVM, JRE, JDK. Среды разработки. Системы сборки.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-basics/" class="md-nav__link">
+        1. Основы Java.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-conditionals-loops-functions/" class="md-nav__link">
+        2. Условные операторы. Операторы циклов. Функции и рекурсия. Массивы.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-oop/" class="md-nav__link">
+        3. Объектно-ориентированное программирование
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-collections/" class="md-nav__link">
+        4. Коллекции. Потоки ввода-вывода.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          5. ⭐ Устройство JVM. Сборщик мусора (GC)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        5. ⭐ Устройство JVM. Сборщик мусора (GC)
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание раздела">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание раздела
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jvm" class="md-nav__link">
+    ⭐ За что отвечает JVM:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classloader" class="md-nav__link">
+    Classloader
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    ⭐ Области данных времени выполнения
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frames" class="md-nav__link">
+    ⭐ Frames
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-engine" class="md-nav__link">
+    ⭐ Execution Engine
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heap-stack-java" class="md-nav__link">
+    ⭐ Что такое Heap и Stack память в Java? Какая разница между ними?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#garbage-collector" class="md-nav__link">
+    ⭐ Garbage Collector
+  </a>
+  
+    <nav class="md-nav" aria-label="⭐ Garbage Collector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ⭐ Для чего нужен сборщик мусора?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gc" class="md-nav__link">
+    Разновидности GC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gc_1" class="md-nav__link">
+    ⭐ Последовательный GC. Поколения
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/">ПБПОИ</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="ПБПОИ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          ПБПОИ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/books/" class="md-nav__link">
+        Книги и ресурсы
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab1/" class="md-nav__link">
+        Лабораторная работа №1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab10/" class="md-nav__link">
+        Лабораторная работа №10
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab11/" class="md-nav__link">
+        Лабораторная работа №11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab2/" class="md-nav__link">
+        Лабораторная работа №2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab3/" class="md-nav__link">
+        Лабораторная работа №3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab4/" class="md-nav__link">
+        Лабораторная работа №4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab5/" class="md-nav__link">
+        Лабораторная работа №5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab6/" class="md-nav__link">
+        Лабораторная работа №6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab7/" class="md-nav__link">
+        Лабораторная работа №7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/practice/" class="md-nav__link">
+        ⭐ Практическое задание
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/tasks/" class="md-nav__link">
+        Задачи
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          ПЯВУ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ПЯВУ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          ПЯВУ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%AF%D0%92%D0%A3/faq/" class="md-nav__link">
+        Небольшой конспект по ООП
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%AF%D0%92%D0%A3/tasks/" class="md-nav__link">
+        Задачи и идеи для проектов
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание раздела">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание раздела
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jvm" class="md-nav__link">
+    ⭐ За что отвечает JVM:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classloader" class="md-nav__link">
+    Classloader
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    ⭐ Области данных времени выполнения
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frames" class="md-nav__link">
+    ⭐ Frames
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-engine" class="md-nav__link">
+    ⭐ Execution Engine
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heap-stack-java" class="md-nav__link">
+    ⭐ Что такое Heap и Stack память в Java? Какая разница между ними?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#garbage-collector" class="md-nav__link">
+    ⭐ Garbage Collector
+  </a>
+  
+    <nav class="md-nav" aria-label="⭐ Garbage Collector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ⭐ Для чего нужен сборщик мусора?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gc" class="md-nav__link">
+    Разновидности GC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gc_1" class="md-nav__link">
+    ⭐ Последовательный GC. Поколения
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+  <h1>5. ⭐ Устройство JVM. Сборщик мусора (GC)</h1>
+
+<h2 id="jvm">⭐ За что отвечает <em>JVM</em>:</h2>
+<ul>
+<li>Загрузка, проверка и исполнение байт кода;</li>
+<li>Предоставление среды выполнения для выполнения байт-кода;</li>
+<li>Управление памятью и очисткой мусора (Garbage collection);</li>
+</ul>
+<p>Виртуальная машина Java (Java Virtual Machine) - это механизм, предоставляющий среду выполнения для управления Java-кодом или приложениями.
+Виртуальная машина является независимой оболочкой исполнения кода, благодаря которой возможен её запуск на любой ОС,
+без влияния ОС на выполняемую программу. </p>
+<p><img alt="Рисунок 1. Подробная архитектура JVM" src="../../assets/images/%D0%9F%D0%91%D0%9F%D0%9E%D0%98/shared/java-architecture-2.png" /></p>
+<p><em>Рисунок 1. Архитектура JVM</em></p>
+<p>JVM работает с 2мя типами данных:  примитивные типы (<strong>primitive types</strong>) и ссылочные типы (<strong>reference types</strong>).</p>
+<p><strong>Примитивы</strong></p>
+<p>JVM работает с примитивными значениями (целыми числами и числами с плавающей точкой). По сути, JVM - это 32-битная машина. 
+Типы <code>long</code> и <code>double</code>, которые являются 64-битными, поддерживаются изначально, но занимают две единицы памяти в <code>frame's local</code> 
+или стеке операндов, поскольку каждая единица составляет 32 бита.
+Типы <code>boolean</code>, <code>byte</code>, <code>short</code> и <code>char</code> имеют расширенный знак (кроме <code>char</code> с нулевым расширением) и работают как 32-разрядные целые числа, так же, как и типы <code>int</code>.
+Меньшие типы имеют только несколько специфических для типа инструкций для загрузки, хранения и преобразования типов.
+<code>boolean</code> значение работает как 8-битное <code>byte</code> значения, где 0 представляет значение <strong>false</strong>, а 1 - значение <strong>true</strong>.</p>
+<p><strong>Типы ссылок и значения</strong></p>
+<p>Существует три типа ссылочных типов: типы классов, типы массивов и типы интерфейсов.
+Их значения являются ссылками на динамически создаваемые экземпляры классов, массивы или экземпляры классов, 
+которые реализуют интерфейсы соответственно.</p>
+<h2 id="classloader">Classloader</h2>
+<p>Загрузчик классов является частью JRE, которая динамически загружает Java классы в JVM. 
+Обычно классы загружаются только по запросу. Система исполнения в Java не должна знать о файлах и файловых системах
+благодаря загрузчику классов. <strong>Делегирование является важной концепцией</strong>, которую выполняет загрузчик. Загрузчик классов 
+отвечает за поиск библиотек, чтение их содержимого и загрузку классов, содержащихся в библиотеках. 
+Эта <strong>загрузка</strong> обычно выполняется <strong>«по требованию»</strong>, поскольку она не происходит до тех пор, пока программа не вызовет класс.
+<strong>Класс с именем может быть загружен только один раз данным загрузчиком классов.</strong></p>
+<p>При запуске JVM, используются три загрузчика классов:</p>
+<ul>
+<li>Bootstrap class loader (Загрузчик класса Bootstrap)</li>
+<li>Extensions class loader (Загрузчик класса расширений)</li>
+<li>System class loader (Системный загрузчик классов)</li>
+</ul>
+<p><strong>Загрузчик класса Bootstrap</strong> загружает основные библиотеки Java, расположенные в папке <code>&lt;JAVA_HOME&gt;/jre/lib</code>. 
+Этот загрузчик является частью ядра JVM, написан на нативном коде.</p>
+<p><strong>Загрузчик класса расширений</strong> загружает код в каталоги расширений 
+(<code>&lt;JAVA_HOME&gt;/jre/lib/ext</code>, или любой другой каталог, указанный системным свойством <code>java.ext.dirs</code>).</p>
+<p><strong>Системный загрузчик</strong> загружает код, найденный в <code>java.class.path</code>, который сопоставляется с переменной среды <code>CLASSPATH</code>.
+Это реализуется классом <code>sun.misc.Launcher$AppClassLoader</code>.</p>
+<p>Загрузчик классов выполняет три основных действия в строгом порядке:</p>
+<ul>
+<li>Загрузка: находит и импортирует двоичные данные для типа. </li>
+<li>Связывание: выполняет проверку, подготовку и (необязательно) разрешение. <ul>
+<li>Проверка: обеспечивает правильность импортируемого типа. </li>
+<li>Подготовка: выделяет память для переменных класса и инициализация памяти значениями по умолчанию. </li>
+<li>Разрешение: преобразует символические ссылки из типа в прямые ссылки. </li>
+</ul>
+</li>
+<li>Инициализация: вызывает код Java, который инициализирует переменные класса их правильными начальными значениями.</li>
+</ul>
+<p><strong>Пользовательский загрузчик классов</strong></p>
+<p>Загрузчик классов написан на Java. Поэтому возможно создать свой собственный загрузчик классов, не понимая тонких деталей JVM.
+У каждого загрузчика классов Java есть родительский загрузчик классов, определенный при создании экземпляра нового 
+загрузчика классов или в качестве системного загрузчика классов по умолчанию для виртуальной машины.</p>
+<p>Что делает возможным следующее:</p>
+<ul>
+<li>загружать или выгружать классы во время выполнения (например, динамически загружать библиотеки во время выполнения, даже из ресурса HTTP).
+Это важная особенность для:<ul>
+<li>реализация скриптовых языков;</li>
+<li>использование bean builders;</li>
+<li>добавить пользовательскую расширение;</li>
+<li>позволяя нескольким пространствам имен общаться. Например, это одна из основ протоколов CORBA / RMI;</li>
+</ul>
+</li>
+<li>изменить способ загрузки байт-кода (например, можно использовать зашифрованный байт-код класса Java);</li>
+<li>модифицировать загруженный байт-код (например, для переплетения аспектов во время загрузки при использовании аспектно-ориентированного программирования);</li>
+</ul>
+<h2 id="_1">⭐ Области данных времени выполнения</h2>
+<p>Run-Time Data Areas. JVM выделяет множество областей данных во время выполнения, которые используются во время выполнения программы. Некоторые участки данных
+созданы JVM во время старта и уничтожаются во время её выключения. Другие создаются для каждого потока и уничтожаются, когда поток уничтожается.</p>
+<p><strong>The pc Register (PCR)</strong></p>
+<p>Виртуальная машина Java может поддерживать много потоков исполнения одновременно. Каждый поток виртуальной машины Java имеет свой собственный регистр PC (program counter).
+В любой момент каждый поток виртуальной машины Java выполняет код одного метода, а именно текущий метод для этого потока.
+Если этот метод не является native, регистр pc содержит адрес инструкции виртуальной машины Java, выполняемой в настоящее время.</p>
+<p>Коротко говоря: для одного потока, существует один PCR, который создается при запуске потока. PCR хранит адрес выполняемой сейчас инструкции JVM.</p>
+<p><strong>Java Virtual Machine Stacks</strong></p>
+<p>Каждый поток в JVM имеет собственный стек, созданный одновременно с потоком.  Стек в JVM хранит frames. 
+Cтеки в JVM могут иметь фиксированный размер или динамически расширяться и сжиматься в соответствии с требованиями вычислений.</p>
+<p><strong>Heap</strong></p>
+<p>JVM имеет heap (кучу), которая используется всеми потоками виртуальной машины Java. 
+Куча - это область данных времени выполнения, из которой выделяется память для всех экземпляров и массивов классов.
+Куча создается при запуске виртуальной машины. Хранилище для объектов восстанавливается автоматической системой 
+управления данными (известной как сборщик мусора); объекты никогда не освобождаются явно. 
+JVM не предполагает какого-либо конкретного типа системы автоматического управления хранением данных, 
+и метод управления может быть выбран в соответствии с системными требованиями разработчика. 
+Куча может иметь фиксированный размер или может быть расширена в соответствии с требованиями вычислений и может быть сокращена, 
+если большая куча становится ненужной. Память для кучи не должна быть смежной.</p>
+<p><strong>Method Area</strong></p>
+<p>JVM имеет область методов, которая является общей для всех потоков. Она хранит структуры для каждого класса, такие как пул констант, данные полей и методов, 
+а также код для методов и конструкторов, включая специальные методы, используемые при инициализации классов и экземпляров, и инициализации интерфейса.
+Хотя область метода является логически частью кучи, простые реализации могут не обрабатываться сборщиком мусора. Область метода может иметь 
+фиксированный размер или может быть расширена в соответствии с требованиями вычислений и может быть сокращена, если большая область метода становится ненужной.</p>
+<p><strong>Run-Time Constant Pool</strong></p>
+<p>A <em>run-time constant pool</em> существует для каждого класса или интерфейса в рантайме и представленно constant_pool таблицей в <code>*.class</code> файле.
+Он содержит несколько видов констант: от числовых литералов, известных во время компиляции, до ссылок на методы и поля, 
+которые должны быть разрешены во время выполнения.  Сам run-time constant pool выполняет функцию,
+аналогичную функции таблицы символов для обычного языка программирования, хотя он содержит более широкий диапазон данных, чем типичная таблица символов.
+Каждый run-time constant pool отделён от JVM's method area. JVM создаёт run-time constant pool вместе с созданием class или interface.</p>
+<p><strong>Native Method Stacks</strong></p>
+<p>Реализация виртуальной машины Java может использовать обычные стеки, обычно называемые «стеки Си», для поддержки native methods (методов, написанных на языке, отличном от языка программирования Java).</p>
+<h2 id="frames">⭐ Frames</h2>
+<p>Frame используется для хранения данных и частичных результатов, а также для выполнения динамического связывания, возврата значений для методов и отправки исключений.
+Новый frame создается каждый раз, когда вызывается метод. Frame уничтожается, когда завершается вызов метода, 
+является ли это завершение нормальным или резким (он генерирует неперехваченное исключение). Frames выделяются из стека потока, создающего frame. 
+Каждый frame имеет свой собственный массив локальных переменных, свой собственный стек операндов и ссылку на пул констант во время выполнения класса текущего метода.
+Размеры массива локальных переменных и стека операндов определяются во время компиляции и предоставляются вместе с кодом для метода, связанного с фреймом.
+Таким образом, размер структуры данных, frame-а зависит только от реализации виртуальной машины Java, и память для этих структур может быть выделена одновременно при вызове метода.</p>
+<p>Только один frame активен в любой точке данного потока управления - метода выполнения, и это frame называется текущим, а его метод известен как текущий метод.
+Класс, в котором определен текущий метод, является текущим классом. Операции над локальными переменными и стеком операндов обычно выполняются со ссылкой на текущий frame.</p>
+<p>Frame перестает быть текущим, если его метод вызывает другой метод или если его метод завершается. Когда метод вызывается, новый frame создается и становится текущим, 
+когда управление переходит к новому методу. При возврате метода текущий frame передает результат вызова метода, если таковой имеется, в предыдущий frame. 
+Текущий frame затем отбрасывается, так как предыдущий frame становится текущим. Обратите внимание, что frame, созданный потоком, 
+является локальным для этого потока и на него не может ссылаться ни один другой поток.</p>
+<p><strong>Локальные переменные</strong></p>
+<p>Каждый frame содержит массив переменных, известных как его локальные переменные. Длина массива локальных переменных frame определяется во время компиляции 
+и предоставляется в двоичном представлении класса или интерфейса вместе с кодом для метода, связанного с frame-ом.
+Единичная локальная переменная может хранить значение типа: boolean, byte, char, short, int, float, reference, or returnAddress. 
+Пара локальных переменных может хранить значение типов: long или double.</p>
+<p>Локальные переменные адресуются путем индексации. Индекс первой локальной переменной равен нулю.</p>
+<p>Значение типа long или типа double занимает две последовательные локальные переменные.</p>
+<p>JVM использует локальные переменные для передачи параметров при вызове метода. При вызове метода класса все параметры передаются в последовательных локальных переменных, 
+начиная с локальной переменной 0. При вызове метода экземпляра локальная переменная 0 всегда используется для передачи ссылки на объект,
+для которого вызывается метод экземпляра (this в Java). Любые параметры впоследствии передаются в последовательных локальных переменных, начиная с локальной переменной 1.</p>
+<p><strong>Стеки операндов (Operand Stacks)</strong></p>
+<p>Каждый frame содержит стек «последний вошел - первый вышел» (LIFO), известный как стек операндов. Максимальная глубина стека операндов frame-a
+определяется во время компиляции и предоставляется вместе с кодом для метода, связанного с frame-ом.</p>
+<p>Стек операнда пуст при создании frame-a, который его содержит. JVM предоставляет инструкции для загрузки констант 
+или значений из локальных переменных или полей в стек операндов. Другие инструкции JVM берут операнды из стека операндов, 
+оперируют с ними и помещают результат обратно в стек операндов. Стек операндов также используется для подготовки параметров 
+для передачи в методы и для получения результатов метода.</p>
+<p>Для примера, инструкция <strong>iadd</strong>  суммирует два int-вых значения. От стека операндов требуется, чтобы два int-вых значения были наверху стека.
+Значения удаляются из стека, операция <strong>pop</strong>. Суммируются и их сумма помещается в стек операндов.</p>
+<p><strong>Динамическое связывание (Dynamic Linking)</strong></p>
+<p>Каждый frame содержит ссылку на  run-time constant pool для типа текущего метода для поддержки динамического связывания кода метода.
+Доступ к вызываемым методам и переменным осуществляется через символические ссылки из class файла.
+Динамическое связывание преобразует эти символьные ссылки на методы в конкретные ссылки на методы, загружая классы по мере необходимости 
+для разрешения пока еще не определенных символов, и преобразует обращения к переменным в соответствующие смещения в структурах хранения, 
+связанных с расположением этих переменных во время выполнения.</p>
+<p>Позднее связывание методов и переменных вносит изменения в другие классы, которые метод использует с меньшей вероятностью нарушить этот код.</p>
+<p><strong>Нормальное завершение вызова метода</strong></p>
+<p>Вызов метода завершается нормально, если этот вызов не вызывает исключение, либо непосредственно из JVM, либо в результате выполнения явного оператора throw. 
+Если вызов текущего метода завершается нормально, то значение может быть возвращено вызывающему методу. 
+Это происходит, когда вызванный метод выполняет одну из инструкций возврата, выбор которых должен соответствовать типу возвращаемого значения (если оно есть).</p>
+<p>Текущий frame используется в этом случае для восстановления состояния инициатора, включая его локальные переменные и стек операндов, 
+с соответствующим образом увеличенным программным счетчиком инициатора, чтобы пропустить инструкцию вызова метода. 
+Затем выполнение обычно продолжается в frame вызывающего метода с возвращенным значением (если оно есть), помещаемым в стек операндов этого frame.</p>
+<p><strong>Резкое завершение вызова метода</strong></p>
+<p>Вызов метода завершается преждевременно, если при выполнении инструкции JVM в методе выдает исключение, и это исключение не обрабатывается в методе.
+Выполнение команды <strong>throw</strong> также приводит к явному выбрасыванию исключения, и, если исключение не перехватывается текущим методом, 
+приводит к неожиданному завершению вызова метода. Вызов метода, который завершается внезапно, никогда не возвращает значение своему вызывающему.</p>
+<h2 id="execution-engine">⭐ Execution Engine</h2>
+<p>Байт-код, назначенный <strong>run-time data areas</strong>, будет выполнен <strong>execution engine</strong>. Механизм выполнения считывает байт-код и выполняет его по частям.</p>
+<p><strong>Interpreter</strong></p>
+<p>Интерпретатор интерпретирует байт-код быстро, но выполняется медленно. Недостаток интерпретатора заключается в том, что, когда один метод вызывается несколько раз, каждый раз требуется новая интерпретация.</p>
+<p><strong>JIT Compiler</strong></p>
+<p>JIT-компилятор устраняет недостатки интерпретатора. Механизм выполнения будет использовать помощь интерпретатора при преобразовании байт-кода, 
+но когда он находит повторный код, он использует JIT-компилятор, который компилирует весь байт-код и изменяет его на собственный код. 
+Этот нативный код будет использоваться непосредственно для повторных вызовов методов, которые улучшают производительность системы.</p>
+<ul>
+<li>Генератор промежуточного кода (Intermediate Code Generator). Производит промежуточный код.</li>
+<li>Code Optimizer. Отвечает за оптимизацию промежуточного кода, сгенерированного выше.</li>
+<li>Генератор целевого кода (Target Code Generator). Отвечает за генерацию машинного кода или родной код.</li>
+<li>Профилировщик (Profiler). Специальный компонент, отвечающий за поиск горячих точек, то есть, вызывается ли метод несколько раз или нет.</li>
+</ul>
+<h2 id="heap-stack-java">⭐ Что такое <em>Heap</em> и <em>Stack</em> память в Java? Какая разница между ними?</h2>
+<p><strong>Heap (куча)</strong> используется Java Runtime для выделения памяти под объекты и классы. Создание нового объекта также происходит в куче. Это же является областью работы сборщика мусора. Любой объект, созданный в куче, имеет глобальный доступ и на него могут ссылаться из любой части приложения.</p>
+<p><strong>Stack (стек)</strong> это область хранения данных также находящееся в общей оперативной памяти (<em>RAM</em>). Всякий раз, когда вызывается метод, в памяти стека создается новый блок, который содержит примитивы и ссылки на другие объекты в методе. Как только метод заканчивает работу, блок также перестает использоваться, тем самым предоставляя доступ для следующего метода.
+Размер стековой памяти намного меньше объема памяти в куче. Стек в Java работает по схеме <em>LIFO</em> (Последний-зашел-Первый-вышел)</p>
+<p>Различия между <em>Heap</em> и <em>Stack</em> памятью:</p>
+<ul>
+<li>Куча используется всеми частями приложения, в то время как стек используется только одним потоком исполнения программы.</li>
+<li>Всякий раз, когда создается объект, он всегда хранится в куче, а в памяти стека содержится лишь ссылка на него. Память стека содержит только локальные переменные примитивных типов и ссылки на объекты в куче.</li>
+<li>Объекты в куче доступны с любой точки программы, в то время как стековая память не может быть доступна для других потоков.</li>
+<li>Стековая память существует лишь какое-то время работы программы, а память в куче живет с самого начала до конца работы программы.</li>
+<li>Если память стека полностью занята, то Java Runtime бросает исключение <code>java.lang.StackOverflowError</code>. Если заполнена память кучи, то бросается исключение <code>java.lang.OutOfMemoryError: Java Heap Space</code>.</li>
+<li>Размер памяти стека намного меньше памяти в куче. </li>
+<li>Из-за простоты распределения памяти, стековая память работает намного быстрее кучи.</li>
+</ul>
+<p>Для определения начального и максимального размера памяти в куче используются <code>-Xms</code> и <code>-Xmx</code> опции JVM. Для стека определить размер памяти можно с помощью опции <code>-Xss</code>.</p>
+<h2 id="garbage-collector">⭐ Garbage Collector</h2>
+<p>Механизм сборки мусора - это процесс освобождения места в куче, для возможности добавления новых объектов.</p>
+<p>Объекты создаются посредством оператора <code>new</code>, тем самым присваивая объекту ссылку. Для окончания работы с объектом достаточно просто перестать на него ссылаться, например, присвоив переменной ссылку на другой объект или значение <code>null</code>; прекратить выполнение метода, чтобы его локальные переменные завершили свое существование естественным образом. Объекты, ссылки на которые отсутствуют, принято называть мусором (<em>garbage</em>), который будет удален.</p>
+<p>Виртуальная машина Java, применяя механизм сборки мусора, гарантирует, что любой объект, обладающий ссылками, остается в памяти — все объекты, которые недостижимы из исполняемого кода, ввиду отсутствия ссылок на них, удаляются с высвобождением отведенной для них памяти. Точнее говоря, объект не попадает в сферу действия процесса сборки мусора, если он достижим посредством цепочки ссылок, начиная с корневой (<em>GC Root</em>) ссылки, т.е. ссылки, непосредственно существующей в выполняемом коде.</p>
+<p>Память освобождается сборщиком мусора по его собственному «усмотрению». Программа может успешно завершить работу, не исчерпав ресурсов свободной памяти или даже не приблизившись к этой черте и поэтому ей так и не потребуются «услуги» сборщика мусора.</p>
+<p>Мусор собирается системой автоматически, без вмешательства пользователя или программиста, но это не значит, что этот процесс не требует внимания вовсе. Необходимость создания и удаления большого количества объектов существенным образом сказывается на производительности приложений и, если быстродействие программы является важным фактором, следует тщательно обдумывать решения, связанные с созданием объектов, — это, в свою очередь, уменьшит и объем мусора, подлежащего утилизации.</p>
+<h3 id="_2">⭐ Для чего нужен сборщик мусора?</h3>
+<p>Сборщик мусора (Garbage Collector) должен делать всего две вещи:</p>
+<ul>
+<li>Находить мусор - неиспользуемые объекты. (Объект считается неиспользуемым, если ни одна из сущностей в коде, выполняемом в данный момент, не содержит ссылок на него, либо цепочка ссылок, которая могла бы связать объект с некоторой сущностью приложения, обрывается);</li>
+<li>Освобождать память от мусора.</li>
+</ul>
+<p>Существует два подхода к обнаружению мусора:</p>
+<ul>
+<li><em>Reference counting</em>;</li>
+<li><em>Tracing</em></li>
+</ul>
+<p><strong>Reference counting</strong> (подсчёт ссылок). Суть этого подхода состоит в том, что каждый объект имеет счетчик. Счетчик хранит информацию о том, сколько ссылок указывает на объект. Когда ссылка уничтожается, счетчик уменьшается. Если значение счетчика равно нулю, - объект можно считать мусором. Главным минусом такого подхода является сложность обеспечения точности счетчика. Также при таком подходе сложно выявлять циклические зависимости (когда два объекта указывают друг на друга, но ни один живой объект на них не ссылается), что приводит к утечкам памяти.</p>
+<p>Главная идея подхода <strong>Tracing</strong> (трассировка) состоит в утверждении, что живыми могут считаться только те объекты, до которых мы можем добраться из корневых точек (<em>GC Root</em>) и те объекты, которые доступны с живого объекта. Всё остальное - мусор.</p>
+<p>Существует 4 типа корневых точки:</p>
+<ul>
+<li>Локальные переменные и параметры методов;</li>
+<li>Потоки;</li>
+<li>Статические переменные;</li>
+<li>Ссылки из JNI.</li>
+</ul>
+<p>Самое простое java приложение будет иметь корневые точки:</p>
+<ul>
+<li>Локальные переменные внутри <code>main()</code> метода и параметры <code>main()</code> метода;</li>
+<li>Поток который выполняет <code>main()</code>;</li>
+<li>Статические переменные класса, внутри которого находится <code>main()</code> метод.</li>
+</ul>
+<p>Таким образом, если мы представим все объекты и ссылки между ними как дерево, то нам нужно будет пройти с корневых узлов (точек) по всем рёбрам. При этом узлы, до которых мы сможем добраться - не мусор, все остальные - мусор. При таком подходе циклические зависимости легко выявляются. HotSpot VM использует именно такой подход.</p>
+<hr />
+<p>Для очистки памяти от мусора существуют два основных метода:</p>
+<ul>
+<li><em>Copying collectors</em></li>
+<li><em>Mark-and-sweep</em></li>
+</ul>
+<p>При <strong>copying collectors</strong> подходе память делится на две части «from-space» и «to-space», при этом сам принцип работы такой:</p>
+<ul>
+<li>Объекты создаются в «from-space»;</li>
+<li>Когда «from-space» заполняется, приложение приостанавливается;</li>
+<li>Запускается сборщик мусора. Находятся живые объекты в «from-space» и копируются в «to-space»;</li>
+<li>Когда все объекты скопированы «from-space» полностью очищается;</li>
+<li>«to-space» и «from-space» меняются местами.</li>
+</ul>
+<p>Главный плюс такого подхода в том, что объекты плотно забивают память. Минусы подхода:</p>
+<ol>
+<li>Приложение должно быть остановлено на время, необходимое для полного прохождения цикла сборки мусора;</li>
+<li>В худшем случае (когда все объекты живые) «form-space» и «to-space» будут обязаны быть одинакового размера.</li>
+</ol>
+<p>Алгоритм работы <strong>mark-and-sweep</strong> можно описать так:</p>
+<ul>
+<li>Объекты создаются в памяти;</li>
+<li>В момент, когда нужно запустить сборщик мусора приложение приостанавливается;</li>
+<li>Сборщик проходится по дереву объектов, помечая живые объекты;</li>
+<li>Сборщик проходится по всей памяти, находя все не отмеченные куски памяти и сохраняя их в «free list»;</li>
+<li>Когда новые объекты начинают создаваться они создаются в памяти доступной во «free list».</li>
+</ul>
+<p>Минусы этого способа:</p>
+<ol>
+<li>Приложение не работает пока происходит сборка мусора;</li>
+<li>Время остановки напрямую зависит от размеров памяти и количества объектов;</li>
+<li>Если не использовать «compacting» память будет использоваться не эффективно.</li>
+</ol>
+<p>Сборщики мусора HotSpot VM используют комбинированный подход <strong>Generational Garbage Collection</strong>, который позволяет использовать разные алгоритмы для разных этапов сборки мусора. Этот подход опирается на том, что:</p>
+<ul>
+<li>большинство создаваемых объектов быстро становятся мусором;</li>
+<li>существует мало связей между объектами, которые были созданы в прошлом и только что созданными объектами.</li>
+</ul>
+<h3 id="gc">Разновидности GC</h3>
+<p>Java HotSpot VM предоставляет разработчикам на выбор четыре различных сборщика мусора:</p>
+<ul>
+<li><strong>Serial (последовательный)</strong> — самый простой вариант для приложений с небольшим объемом данных и не требовательных к задержкам. На данный момент используется сравнительно редко, но на слабых компьютерах может быть выбран виртуальной машиной в качестве сборщика по умолчанию. Использование Serial GC включается опцией <code>-XX:+UseSerialGC</code>.</li>
+<li><strong>Parallel (параллельный)</strong> — наследует подходы к сборке от последовательного сборщика, но добавляет параллелизм в некоторые операции, а также возможности по автоматической подстройке под требуемые параметры производительности. Параллельный сборщик включается опцией <code>-XX:+UseParallelGC</code>.</li>
+<li><strong>Concurrent Mark Sweep (CMS)</strong> — нацелен на снижение максимальных задержек путем выполнения части работ по сборке мусора параллельно с основными потоками приложения. Подходит для работы с относительно большими объемами данных в памяти. Использование CMS GC включается опцией <code>-XX:+UseConcMarkSweepGC</code>.</li>
+<li><strong>Garbage-First (G1)</strong> — создан для замены CMS, особенно в серверных приложениях, работающих на многопроцессорных серверах и оперирующих большими объемами данных. <em>G1</em> включается опцией Java <code>-XX:+UseG1GC</code>.</li>
+</ul>
+<h3 id="gc_1">⭐ Последовательный GC. Поколения</h3>
+<p><strong>Serial Garbage Collector (Последовательный сборщик мусора)</strong> был одним из первых сборщиков мусора в HotSpot VM. Во время работы этого сборщика приложения приостанавливается и продолжает работать только после прекращения сборки мусора. </p>
+<p>Память приложения делится на три пространства:</p>
+<ul>
+<li><em>Young generation</em>. Объекты создаются именно в этом участке памяти.</li>
+<li><em>Old generation</em>. В этот участок памяти перемещаются объекты, которые переживают «minor garbage collection».</li>
+<li><em>Permanent generation</em>. Тут хранятся метаданные об объектах, <em>Class data sharing (CDS)</em>, <em>пул строк (String pool)</em>. Permanent область делится на две: только для чтения и для чтения-записи. Очевидно, что в этом случае область только для чтения не чистится сборщиком мусора никогда.</li>
+</ul>
+<p>Область памяти Young generation состоит из трёх областей: <em>Eden</em> и двух меньших по размеру <em>Survivor spaces</em> - <em>To space</em> и <em>From space</em>. Большинство объектов создаются в области Eden, за исключением очень больших объектов, которые не могут быть размещены в ней и поэтому сразу размещаются в Old generation. В Survivor spaces перемещаются объекты, которые пережили по крайней мере одну сборку мусора, но ещё не достигли порога «старости» (<em>tenuring threshold</em>), чтобы быть перемещенными в Old generation.</p>
+<p>Когда Young generation заполняется, то в этой области запускается процесс лёгкой сборки (<em>minor collection</em>), в отличие от процесса сборки, проводимого над всей кучей (<em>full collection</em>). Он происходит следующим образом: в начале работы одно из Survivor spaces - To space, является пустым, а другое - From space, содержит объекты, пережившие предыдущие сборки. Сборщик мусора ищет живые объекты в Eden и копирует их в To space, а затем копирует туда же и живые «молодые» (то есть не пережившие еще заданное число сборок мусора) объекты из From space. Старые объекты из From space перемещаются в Old generation. После лёгкой сборки From space и To space меняются ролями, область Eden становится пустой, а число объектов в Old generation увеличивается.</p>
+<p>Если в процессе копирования живых объектов To space переполняется, то оставшиеся живые объекты из Eden и From space, которым не хватило места в To space, будут перемещены в Old generation, независимо от того, сколько сборок мусора они пережили.</p>
+<p>Поскольку при использовании этого алгоритма сборщик мусора просто копирует все живые объекты из одной области памяти в другую, то такой сборщик мусора называется <em>copying</em> (копирующий). Очевидно, что для работы копирующего сборщика мусора у приложения всегда должна быть свободная область памяти, в которую будут копироваться живые объекты, и такой алгоритм может применяться для областей памяти сравнительно небольших по отношению к общему размеру памяти приложения. Young generation как раз удовлетворяет этому условию (по умолчанию на машинах клиентского типа эта область занимает около 10% кучи (значение может варьироваться в зависимости от платформы)).</p>
+<p>Однако, для сборки мусора в Old generation, занимающем большую часть всей памяти, используется другой алгоритм.</p>
+<p>В Old generation сборка мусора происходит с использованием алгоритма <em>mark-sweep-compact</em>, который состоит из трёх фаз. В фазе <em>Mark</em> (пометка) сборщик мусора помечает все живые объекты, затем, в фазе <em>Sweep</em> (очистка) все не помеченные объекты удаляются, а в фазе <em>Сompact</em> (уплотнение) все живые объекты перемещаются в начало Old generation, в результате чего свободная память после очистки представляет собой непрерывную область. Фаза уплотнения выполняется для того, чтобы избежать фрагментации и упростить процесс выделения памяти в Old generation.</p>
+<p>Когда свободная память представляет собой непрерывную область, то для выделения памяти под создаваемый объект можно использовать очень быстрый (около десятка машинных инструкций) алгоритм <em>bump-the-pointer</em>: адрес начала свободной памяти хранится в специальном указателе, и когда поступает запрос на создание нового объекта, код проверяет, что для нового объекта достаточно места, и, если это так, то просто увеличивает указатель на размер объекта.</p>
+<p>Последовательный сборщик мусора отлично подходит для большинства приложений, использующих до 200 мегабайт кучи, работающих на машинах клиентского типа и не предъявляющих жёстких требований к величине пауз, затрачиваемых на сборку мусора. В то же время модель «stop-the-world» может вызвать длительные паузы в работе приложения при использовании больших объёмов памяти. Кроме того, последовательный алгоритм работы не позволяет оптимально использовать вычислительные ресурсы компьютера, и последовательный сборщик мусора может стать узким местом при работе приложения на многопроцессорных машинах.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            К началу
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул">
+      
+        
+        <a href="../4-collections/" class="md-footer__link md-footer__link--prev" aria-label="Назад: 4. Коллекции. Потоки ввода-вывода." rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              4. Коллекции. Потоки ввода-вывода.
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../%D0%9F%D0%91%D0%9F%D0%9E%D0%98/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Программирование: Базовые процедуры обработки информации" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              Программирование: Базовые процедуры обработки информации
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Сделано с &#10084; Денисом Оболенским
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/readonlyden/Programming-101" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://vk.com/sevsu_itiks" target="_blank" rel="noopener" title="vk.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M545 117.7c3.7-12.5 0-21.7-17.8-21.7h-58.9c-15 0-21.9 7.9-25.6 16.7 0 0-30 73.1-72.4 120.5-13.7 13.7-20 18.1-27.5 18.1-3.7 0-9.4-4.4-9.4-16.9V117.7c0-15-4.2-21.7-16.6-21.7h-92.6c-9.4 0-15 7-15 13.5 0 14.2 21.2 17.5 23.4 57.5v86.8c0 19-3.4 22.5-10.9 22.5-20 0-68.6-73.4-97.4-157.4-5.8-16.3-11.5-22.9-26.6-22.9H38.8c-16.8 0-20.2 7.9-20.2 16.7 0 15.6 20 93.1 93.1 195.5C160.4 378.1 229 416 291.4 416c37.5 0 42.1-8.4 42.1-22.9 0-66.8-3.4-73.1 15.4-73.1 8.7 0 23.7 4.4 58.7 38.1 40 40 46.6 57.9 69 57.9h58.9c16.8 0 25.3-8.4 20.4-25-11.2-34.9-86.9-106.7-90.3-111.5-8.7-11.2-6.2-16.2 0-26.2.1-.1 72-101.3 79.4-135.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.sevsu.ru/" target="_blank" rel="noopener" title="www.sevsu.ru" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top"], "translations": {"clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "search.config.lang": "ru", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\u041f\u043e\u0438\u0441\u043a", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version.title": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.649a939e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

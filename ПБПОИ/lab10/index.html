@@ -1,0 +1,1456 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://readonlyden.github.io/Programming-101/%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab10/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.2">
+    
+    
+      
+        <title>Лабораторная работа №10 - СевГУ - П:БПОИ / П:ЯВУ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f7951f6f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-44C4RXEXJJ"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-44C4RXEXJJ",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-44C4RXEXJJ"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="СевГУ - П:БПОИ / П:ЯВУ" class="md-header__button md-logo" aria-label="СевГУ - П:БПОИ / П:ЯВУ" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            СевГУ - П:БПОИ / П:ЯВУ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Лабораторная работа №10
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent=""  aria-label="Включить темную тему"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Включить темную тему" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Включить светлую тему"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Включить светлую тему" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Очистить" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Главная
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Git/in-real-world/" class="md-tabs__link">
+        Git
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/0-prerequisites/" class="md-tabs__link">
+        Основы Java
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        ПБПОИ
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%D0%9F%D0%AF%D0%92%D0%A3/faq/" class="md-tabs__link">
+        ПЯВУ
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="СевГУ - П:БПОИ / П:ЯВУ" class="md-nav__button md-logo" aria-label="СевГУ - П:БПОИ / П:ЯВУ" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    СевГУ - П:БПОИ / П:ЯВУ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Главная
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Git
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Git" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Git
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Git/in-real-world/" class="md-nav__link">
+        Git в реальной разработке
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Основы Java
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Основы Java" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Основы Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/0-prerequisites/" class="md-nav__link">
+        0. Java. JVM, JRE, JDK. Среды разработки. Системы сборки.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/1-java-basics/" class="md-nav__link">
+        1. Основы Java.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/2-conditionals-loops-functions/" class="md-nav__link">
+        2. Условные операторы. Операторы циклов. Функции и рекурсия. Массивы.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/3-oop/" class="md-nav__link">
+        3. Объектно-ориентированное программирование
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/4-collections/" class="md-nav__link">
+        4. Коллекции. Потоки ввода-вывода.
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D1%8B%20Java/5-gc/" class="md-nav__link">
+        5. ⭐ Устройство JVM. Сборщик мусора (GC)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">ПБПОИ</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="ПБПОИ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          ПБПОИ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../books/" class="md-nav__link">
+        Книги и ресурсы
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1/" class="md-nav__link">
+        Лабораторная работа №1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Лабораторная работа №10
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Лабораторная работа №10
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание раздела">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание раздела
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Название работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Цель работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Постановка задачи
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Краткие теоретические сведения
+  </a>
+  
+    <nav class="md-nav" aria-label="Краткие теоретические сведения">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Рекурсия, как приём программирования
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    Классы-библиотеки как набор статических алгоритмов
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Порядок выполнения работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Варианты заданий
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Пример программы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Контрольные вопросы
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab11/" class="md-nav__link">
+        Лабораторная работа №11
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2/" class="md-nav__link">
+        Лабораторная работа №2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3/" class="md-nav__link">
+        Лабораторная работа №3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4/" class="md-nav__link">
+        Лабораторная работа №4
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5/" class="md-nav__link">
+        Лабораторная работа №5
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab6/" class="md-nav__link">
+        Лабораторная работа №6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab7/" class="md-nav__link">
+        Лабораторная работа №7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practice/" class="md-nav__link">
+        ⭐ Практическое задание
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tasks/" class="md-nav__link">
+        Задачи
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          ПЯВУ
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="ПЯВУ" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          ПЯВУ
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%AF%D0%92%D0%A3/faq/" class="md-nav__link">
+        Небольшой конспект по ООП
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%D0%9F%D0%AF%D0%92%D0%A3/tasks/" class="md-nav__link">
+        Задачи и идеи для проектов
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание раздела">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание раздела
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Название работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Цель работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Постановка задачи
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Краткие теоретические сведения
+  </a>
+  
+    <nav class="md-nav" aria-label="Краткие теоретические сведения">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Рекурсия, как приём программирования
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    Классы-библиотеки как набор статических алгоритмов
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Порядок выполнения работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Варианты заданий
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Пример программы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Контрольные вопросы
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+  <h1>Лабораторная работа №10</h1>
+
+<h3 id="_1">Название работы</h3>
+<p>Разработка рекурсивных и итерационных алгоритмов. Классы-библиотеки статических методов.</p>
+<h3 id="_2">Цель работы</h3>
+<p>Целью данной работы является исследование и сравнение рекурсивных и итерационных алгоритмов обработки одномерных массивов, получение навыков в создании классов, являющихся библиотеками статических методов. </p>
+<h3 id="_3">Постановка задачи</h3>
+<p>Разработать программу, реализующую обработку массива данных по заданию, указанному в таблице вариантов, в соответствии с номером варианта. Программа должна удовлетворять нижеперечисленным требованиям.</p>
+<p>Программа должна содержать два класса: первый класс, содержащий метод <strong><code>main()</code></strong> (стартовая точка программы), и второй класс, содержащий два статических метода обработки одномерных массивов (рекурсивный и итерационный), заданные в таблице вариантов, а также статический метод вывода одномерного массива в окно терминала. Второй класс будет выполнять роль библиотеки алгоритмов. </p>
+<p>В методе <code>main()</code> должна быть предусмотрена инициализация различных массивов для полной проверки разработанных методов обработки массивов (набор тестов), соответствующие вызовы методов обработки массивов и вывод результатов их работы.</p>
+<h3 id="_4">Краткие теоретические сведения</h3>
+<h4 id="_5">Рекурсия, как приём программирования</h4>
+<p>Рекурсия – это процесс определения чего-то в терминах самого себя.</p>
+<p>Рекурсия при обработке данных выражается в вызове подпрограммой (процедурой или функцией) самой себя.</p>
+<p>В  подпрограммах, использующих рекурсию, нужно обязательно предусмотреть нерекурсивный случай.</p>
+<p>Иногда рекурсия позволяет повысить эффективность обработки данных (алгоритм быстрой сортировки Хаара).</p>
+<p>Иногда без рекурсии невозможно даже записать решение задачи, т.к. потребуется слишком много операторов (задача о Ханойских башнях:  рекурсия здесь не влияет на трудоемкость алгоритма (число операций), но позволяет компактно записать (и вообще записать) решение задачи) .</p>
+<p>Если рекурсивные алгоритмы не дают перечисленных выше преимуществ, то лучше использовать итерационные алгоритмы, чтобы избежать переполнения системного стека при большой глубине рекурсивных вызовов. </p>
+<div class="admonition note">
+<p class="admonition-title">Внимание</p>
+<p>В некоторых языках предусмотрена оптимизация определенного вида рекурсии, называемого <a href="https://ru.wikipedia.org/wiki/%D0%A5%D0%B2%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D0%B0%D1%8F_%D1%80%D0%B5%D0%BA%D1%83%D1%80%D1%81%D0%B8%D1%8F">хвостовой рекурсией</a>. </p>
+<p>К сожалению, не все алгоритмы возможно реализовать таким образом.</p>
+<p>В случае оптимизации хвостовой рекурсии, компилятор сгенерирует такой код, который не будет приводить к переполнению стека вызовов.</p>
+</div>
+<p>Часто в качестве альтернативы рекурсивному методу обработки данных можно предложить итерационный, т.е. использующий циклическую обработку данных (как правило, с помощью операторов <code>for</code>, <code>while</code>, <code>do..while</code>). Циклические алгоритмы обработки данных подробно рассматривались в седьмой, восьмой и девятой лабораторных работах.</p>
+<h4 id="-">Классы-библиотеки как набор статических алгоритмов</h4>
+<p>Базовая концепция <em>Java</em> – класс. Всё, что угодно в <em>Java</em> реализуется внутри класса. </p>
+<p>В <em>Java</em> можно реализовать несколько различных абстракций и концепций ООП:</p>
+<p><strong>1. Стандартный класс</strong>, используемый как шаблон для создания объектов (т.е. на основе этого класса создаются объекты-экземпляры, имеющие свойства, задаваемые переменными класса, и поведение, задаваемое методами класса). Например, на базе класса <code>Student</code> создаются конкретные объекты-экземпляры студентов ("Иванов", "Петров" и др.).
+Такие классы подробно рассматриваются в 11, 12, 13 и 16 лабораторных работах.</p>
+<p><strong>2. Класс, по сути, являющийся библиотекой алгоритмов</strong> - класс, содержащий только статические методы. В качестве примера можно привести класс <code>Math</code>.</p>
+<p>Что такое статические методы? Методы и поля, отмеченные ключевым словом <code>static</code>, считаются принадлежностью класса, а не объекта. Для запуска такого метода не требуется экземпляр класса. Такие методы запускаются от имени класса. Для доступа к таким методам нужно обратиться сперва к имени класса, а потом через точку - к имени метода или константе.
+<div class="highlight"><pre><span></span><code><span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">;</span>
+</code></pre></div></p>
+<p>Использование статических переменных для указанного класса противоречит идее наличия у каждого объекта своих переменных экземпляра – свойств объекта (статические переменные класса будут одними и теми же для всех созданных объектов). Статические методы предназначены не для реализации функциональности объектов, а для упрощения кода и переиспользуемости, а также в тех случаях, когда использование методов экземпляра неоправданно.</p>
+<p><strong>3. Класс, содержащий только статические переменные (без методов)</strong>. Целесообразно использовать для задания глобальных переменных проекта (такие переменные будут существовать в течение всего времени работы программы). 
+В последнее время такие классы создаются редко, хранят только переиспользуемые константы, которые не будут изменяться. Раньше также использовался для конфигурации, но сейчас для конфигурации используется связка из обычного класса + контейнера внедрения зависимости + библиотеки для считывания конфигурации.</p>
+<p><strong>4. Интерфейсы</strong>, описывающие действия над объектами разных иерархий и разной природы (является контрактом, содержит заголовки методов, которые необходимо реализовать в классе), будет рассмотрен позже.</p>
+<p><strong>5. Класс, который является стартовой точкой программы</strong>, должен содержать статический метод <code>main()</code>. На основе такого класса объекты, как правило, не создаются.           </p>
+<p>В данной лабораторной работе мы создаем классы второго и пятого видов.</p>
+<h3 id="_6">Порядок выполнения работы</h3>
+<ol>
+<li>Разработайте класс, содержащий статические методы обработки одномерных массивов в соответствии с вариантом задания.</li>
+<li>Разработайте тесты для полной проверки каждого метода. Проверьте правильность работы каждого метода, запустив его на соответствующих тестах. В случае необходимости отладки, используйте отладчик.</li>
+<li>Разработайте класс, являющийся стартовой точкой программы (содержащий метод <code>main</code>). В методе <code>main</code> продемонстрируйте правильность работы рекурсивного и итерационного метода обработки одномерного массива на всех разработанных в пункте 2 тестах.</li>
+<li>Проведите окончательную отладку программы, результаты работы приведите в отчёте.</li>
+</ol>
+<h3 id="_7">Варианты заданий</h3>
+<p>Вариант задания (таблица 1) предусматривает разработку рекурсивной и итерационной функции обработки одномерного массива.</p>
+<p><em>Таблица 1 - Варианты заданий</em></p>
+<table>
+<thead>
+<tr>
+<th>НВ</th>
+<th>Рекурсивная</th>
+<th>Итерационная</th>
+<th>НВ</th>
+<th>Рекурсивная</th>
+<th>Итерационная</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Сумма элементов, значение которых больше A</td>
+<td>Количество нулевых элементов</td>
+<td>16</td>
+<td>Число ненулевых элементов</td>
+<td>Число нулевых элементов</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Произведение ненулевых элементов</td>
+<td>Количество ненулевых элементов</td>
+<td>17</td>
+<td>Максимальный среди положительных элементов</td>
+<td>Число отрицательных элементов</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Сумма отрицательных элементов</td>
+<td>Количество положительных элементов</td>
+<td>18</td>
+<td>Минимальный среди отрицательных элементов</td>
+<td>Число положительных элементов.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Количество нулевых элементов</td>
+<td>Сумма элементов, значение которых больше A.</td>
+<td>19</td>
+<td>Произведение отрицательных элементов</td>
+<td>Сумма положительных элементов</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Число нулевых элементов</td>
+<td>Число ненулевых элементов</td>
+<td>20</td>
+<td>Сумма элементов, значение которых меньше A.</td>
+<td>Число элементов, значение которых больше В.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Число ненулевых элементов</td>
+<td>Число нулевых элементов</td>
+<td>21</td>
+<td>Количество ненулевых элементов</td>
+<td>Максимальный, среди элементов, больших  В.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Сумма отрицательных элементов</td>
+<td>Количество положительных элементов</td>
+<td>22</td>
+<td>Максимальный по модулю элемент</td>
+<td>Сумма модулей отрицательных элементов</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Произведение отрицательных элементов</td>
+<td>Произведение положительных элементов</td>
+<td>23</td>
+<td>Минимальный по модулю элемент</td>
+<td>Количество элементов массива, не принадлежащих интервалу [А,В]</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Сумма положительных элементов</td>
+<td>Количество отрицательных элементов</td>
+<td>24</td>
+<td>Минимальный элемент в интервале [A,B]</td>
+<td>Количество элементов, кратных 5</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Сумма элементов, значение которых меньше А</td>
+<td>Количество элементов, значение которых находится в диапазоне [A,B]</td>
+<td>25</td>
+<td>Количество элементов, не кратных 3</td>
+<td>Сумма элементов кратных 3 значением.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Количество элементов, значение которых находится в диапазоне [A,B]</td>
+<td>Сумма элементов, кратных 5.</td>
+<td>26</td>
+<td>Минимальный по модулю элемент</td>
+<td>Максимальный по модулю элемент</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Сумма элементов, имеющих нечетные значения</td>
+<td>Сумма элементов, значение которых находится в диапазоне [A,B]</td>
+<td>27</td>
+<td>Максимальный среди положительных элементов</td>
+<td>Количество отрицательных элементов</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Максимальный, среди положительных элементов</td>
+<td>Количество положительных элементов</td>
+<td>28</td>
+<td>Количество элементов, кратных 7</td>
+<td>Минимальный среди элементов, не находящихся в диапазоне [A,B]</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Количество нулевых элементов</td>
+<td>Сумма элементов, имеющих нечетные значения.</td>
+<td>29</td>
+<td>Сумма элементов с четным значением</td>
+<td>Количество элементов, не кратных 7</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Число нулевых элементов</td>
+<td>Число ненулевых элементов</td>
+<td>30</td>
+<td>Количество элементов с нечетным значением</td>
+<td>Произведение элементов с четным значением</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">Пример программы</h3>
+<p>Задание. Разработать рекурсивный и итерационный статические методы, вычисляющие количество четных элементов в массиве <code>arr</code>, и продемонстрировать их работу. Указанные методы оформить отдельным классом.
+Алгоритм работы рекурсивного метода представлен на рисунке 1а, алгоритм работы итерационного метода представлен на рисунке 1б.</p>
+<p><img alt="Схемы алгоритмов" src="../../assets/images/%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab10/1.png" /></p>
+<p><em>Рисунок 1 - Схемы алгоритмов а) рекурсивный б) итерационный</em></p>
+<p>Текст программы будет иметь следующий вид.
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayMethods</span> <span class="p">{</span>
+    <span class="c1">// Метод для вывода массива в одну строку</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">printArray</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span> 
+        <span class="k">if</span> <span class="p">(</span><span class="n">arr</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="s">&quot; &quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Рекурсивная функция, возвращающая количество элементов </span>
+    <span class="c1">// с четным значением в массиве</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">countOddElementsRecursive</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">startIndex</span><span class="p">,</span> <span class="kt">int</span> <span class="n">endIndex</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// если startIndex &gt; endIndex метод вернет 0</span>
+        <span class="c1">// Делим массив две части</span>
+        <span class="c1">// 1 2 3 4 5 делится на 1 и 2 3 4 5</span>
+        <span class="c1">// Так как массив разделить нельзя, используем индексы</span>
+        <span class="c1">// Вначале проверяем arr[startIndex]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">startIndex</span> <span class="o">&lt;=</span> <span class="n">endIndex</span> <span class="p">)</span> <span class="p">{</span>  <span class="c1">// если есть, что просматривать</span>
+            <span class="c1">// Проверяем первый элемент отдельно</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="n">startIndex</span><span class="o">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">{</span> 
+                <span class="n">result</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="c1">// Далее проверяем оставшуюся часть массива</span>
+
+            <span class="c1">// базовый случай</span>
+            <span class="c1">// нет оставшейся части массива</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">startIndex</span> <span class="o">==</span> <span class="n">endIndex</span><span class="p">)</span> <span class="p">{</span>
+               <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">// рекурсивный случай</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="c1">// оставшуюся часть массива проверяем отдельно рекурсивно</span>
+                <span class="k">return</span> <span class="n">result</span> <span class="o">+</span> <span class="n">countOddElementsRecursive</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">start</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span> 
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Итерационная функция, возвращающая количество элементов </span>
+    <span class="c1">// с четным значением в массиве </span>
+    <span class="c1">// Нет смысла передавать индексы, так как у нас есть цикл)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">countOddElementsIterative</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">result</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+  <span class="p">}</span> 
+<span class="p">}</span>  
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span> <span class="p">(</span><span class="n">String</span> <span class="n">args</span> <span class="o">[</span> <span class="o">]</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">B</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span> <span class="p">};</span> 
+        <span class="c1">// четные и нечетные,</span>
+        <span class="c1">// первый элемент - четный</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">C</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">125</span> <span class="p">};</span>
+        <span class="c1">// четные и нечетные,</span>
+        <span class="c1">// первый элемент - нечетный</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">D</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span> <span class="p">};</span> 
+        <span class="c1">//только нечетные</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">E</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">90</span> <span class="p">};</span>
+        <span class="c1">//только четные</span>
+
+        <span class="c1">//статический метод запускается от имени класса, </span>
+        <span class="c1">//в котором он определен</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Массив В:&quot;</span><span class="p">);</span>
+        <span class="n">ArrayMethods</span><span class="p">.</span><span class="na">printArray</span><span class="p">(</span><span class="n">B</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Число четных элементов в массиве: &quot;</span> <span class="o">+</span>
+        <span class="n">ArrayMethods</span><span class="p">.</span><span class="na">countOddElementsRecursive</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">B</span><span class="p">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span> <span class="s">&quot;  &quot;</span><span class="o">+</span>
+        <span class="n">ArrayMethods</span><span class="p">.</span><span class="na">countOddElementsIterative</span><span class="p">(</span><span class="n">B</span><span class="p">));</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Массив C:&quot;</span><span class="p">);</span>
+        <span class="n">ArrayMethods</span><span class="p">.</span><span class="na">printArray</span><span class="p">(</span><span class="n">C</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Число четных элементов в массиве: &quot;</span> <span class="o">+</span>
+        <span class="n">ArrayMethods</span><span class="p">.</span><span class="na">countOddElementsRecursive</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">C</span><span class="p">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span> <span class="s">&quot;  &quot;</span><span class="o">+</span>
+        <span class="n">ArrayMethods</span><span class="p">.</span><span class="na">countOddElementsIterative</span><span class="p">(</span><span class="n">C</span><span class="p">));</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Массив D:&quot;</span><span class="p">);</span>
+        <span class="n">ArrayMethods</span><span class="p">.</span><span class="na">printArray</span><span class="p">(</span><span class="n">D</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Число четных элементов в массиве: &quot;</span> <span class="o">+</span>
+        <span class="n">ArrayMethods</span><span class="p">.</span><span class="na">countOddElementsRecursive</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">D</span><span class="p">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span> <span class="s">&quot;  &quot;</span><span class="o">+</span>
+        <span class="n">ArrayMethods</span><span class="p">.</span><span class="na">countOddElementsIterative</span><span class="p">(</span><span class="n">D</span><span class="p">));</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Массив E:&quot;</span><span class="p">);</span>
+        <span class="n">ArrayMethods</span><span class="p">.</span><span class="na">printArray</span><span class="p">(</span><span class="n">E</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Число четных элементов в массиве: &quot;</span> <span class="o">+</span>
+        <span class="n">ArrayMethods</span><span class="p">.</span><span class="na">countOddElementsRecursive</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">E</span><span class="p">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span> <span class="s">&quot;  &quot;</span><span class="o">+</span>
+        <span class="n">ArrayMethods</span><span class="p">.</span><span class="na">countOddElementsIterative</span><span class="p">(</span><span class="n">E</span><span class="p">));</span>   
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><img alt="Результаты работы программы" src="../../assets/images/%D0%9F%D0%91%D0%9F%D0%9E%D0%98/lab10/2.png" /></p>
+<p><em>Рисунок 2 - Результаты работы программы</em></p>
+<h3 id="_9">Контрольные вопросы</h3>
+<ol>
+<li>Что такое рекурсия? В чем выражается рекурсия при обработке данных?</li>
+<li>Какой случай обязательно должен быть предусмотрен в рекурсивном алгоритме?</li>
+<li>В чем недостаток рекурсивных алгоритмов?</li>
+<li>Когда следует применять рекурсивные алгоритмы?</li>
+<li>Что такое итерационный алгоритм? На основе каких управляющих операторов он строится? </li>
+<li>Может ли итерационный метод быть альтернативой рекурсивному? Если да, то приведите пример.</li>
+<li>В каких классах оправдано применение статических методов и переменных? </li>
+<li>В каких классах иметь статические методы и переменные не рекомендуется?</li>
+</ol>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            К началу
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Нижний колонтитул">
+      
+        
+        <a href="../lab1/" class="md-footer__link md-footer__link--prev" aria-label="Назад: Лабораторная работа №1" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Назад
+              </span>
+              Лабораторная работа №1
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../lab11/" class="md-footer__link md-footer__link--next" aria-label="Вперед: Лабораторная работа №11" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Вперед
+              </span>
+              Лабораторная работа №11
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Сделано с &#10084; Денисом Оболенским
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/readonlyden/Programming-101" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://vk.com/sevsu_itiks" target="_blank" rel="noopener" title="vk.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M545 117.7c3.7-12.5 0-21.7-17.8-21.7h-58.9c-15 0-21.9 7.9-25.6 16.7 0 0-30 73.1-72.4 120.5-13.7 13.7-20 18.1-27.5 18.1-3.7 0-9.4-4.4-9.4-16.9V117.7c0-15-4.2-21.7-16.6-21.7h-92.6c-9.4 0-15 7-15 13.5 0 14.2 21.2 17.5 23.4 57.5v86.8c0 19-3.4 22.5-10.9 22.5-20 0-68.6-73.4-97.4-157.4-5.8-16.3-11.5-22.9-26.6-22.9H38.8c-16.8 0-20.2 7.9-20.2 16.7 0 15.6 20 93.1 93.1 195.5C160.4 378.1 229 416 291.4 416c37.5 0 42.1-8.4 42.1-22.9 0-66.8-3.4-73.1 15.4-73.1 8.7 0 23.7 4.4 58.7 38.1 40 40 46.6 57.9 69 57.9h58.9c16.8 0 25.3-8.4 20.4-25-11.2-34.9-86.9-106.7-90.3-111.5-8.7-11.2-6.2-16.2 0-26.2.1-.1 72-101.3 79.4-135.6z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.sevsu.ru/" target="_blank" rel="noopener" title="www.sevsu.ru" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top"], "translations": {"clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "search.config.lang": "ru", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\u041f\u043e\u0438\u0441\u043a", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version.title": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.649a939e.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
